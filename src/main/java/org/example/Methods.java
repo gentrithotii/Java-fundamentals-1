@@ -8,6 +8,8 @@ public class Methods {
         Scanner userInput = new Scanner(System.in);
 //        printText(userInput);
         printUntilNumber(2);
+        System.out.println("");
+        printFromNumberToOne(6);
     }
 
 
@@ -23,6 +25,12 @@ public class Methods {
 
         for (int i = 1; i <= userInput; i++) {
             System.out.println("In a hole in the ground there lived a method");
+        }
+    }
+
+    public static void printFromNumberToOne(int num){
+        for(int i = num; i >= 1; i--){
+            System.out.println(i);
         }
     }
 }
