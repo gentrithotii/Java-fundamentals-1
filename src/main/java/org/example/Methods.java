@@ -9,12 +9,23 @@ public class Methods {
 //        printText(userInput);
 //        printUntilNumber(2);
 //        printFromNumberToOne(6);
-        division(3, 5);
+//        division(3, 5);
+        divisibleByThreeInRange(2, 10);
+    }
+
+    public static void divisibleByThreeInRange(int beginning, int end) {
+
+        for(int i = beginning; i <= end; i++){
+            if(i % 3 == 0){
+                System.out.println(i);
+            }
+
+        }
     }
 
     public static void division(int numerator, int denominator) {
         double result;
-        result = (double)numerator / denominator;
+        result = (double) numerator / denominator;
         System.out.println(result);
 
     }
