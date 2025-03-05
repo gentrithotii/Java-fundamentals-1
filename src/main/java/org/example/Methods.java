@@ -7,11 +7,17 @@ public class Methods {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 //        printText(userInput);
-        printUntilNumber(2);
-        System.out.println("");
-        printFromNumberToOne(6);
+//        printUntilNumber(2);
+//        printFromNumberToOne(6);
+        division(3, 5);
     }
 
+    public static void division(int numerator, int denominator) {
+        double result;
+        result = (double)numerator / denominator;
+        System.out.println(result);
+
+    }
 
     public static void printUntilNumber(int num) {
         for (int i = 1; i <= num; i++) {
@@ -28,8 +34,8 @@ public class Methods {
         }
     }
 
-    public static void printFromNumberToOne(int num){
-        for(int i = num; i >= 1; i--){
+    public static void printFromNumberToOne(int num) {
+        for (int i = num; i >= 1; i--) {
             System.out.println(i);
         }
     }
