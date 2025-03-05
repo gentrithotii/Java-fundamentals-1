@@ -15,10 +15,18 @@ public class Methods {
 //        System.out.println(word());
 //        int answer = sum(4, 3, 6, 1);
 //        System.out.println("Sum: " + answer);
-        int answer = greatest(2, 1, 7);
-        System.out.println(answer);
+//        int answer = greatest(2, 1, 7);
+//        System.out.println(answer);
+        double result = average(4, 3, 6, 1);
+        System.out.println("Average: " + result);
 
+    }
 
+    public static double average(int num1, int num2, int num3, int num4) {
+        int storeSum = sum(num1, num2, num3, num4);
+        int numberOfNums = 4;
+
+        return (double) storeSum / numberOfNums;
     }
 
     public static int greatest(int number1, int number2, int number3) {
