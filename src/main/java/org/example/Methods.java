@@ -10,13 +10,54 @@ public class Methods {
 //        printUntilNumber(2);
 //        printFromNumberToOne(6);
 //        division(3, 5);
-        divisibleByThreeInRange(2, 10);
+//        divisibleByThreeInRange(2, 10);
+//        System.out.println(numberUno());
+//        System.out.println(word());
+//        int answer = sum(4, 3, 6, 1);
+//        System.out.println("Sum: " + answer);
+        int answer = greatest(2, 1, 7);
+        System.out.println(answer);
+
+
+    }
+
+    public static int greatest(int number1, int number2, int number3) {
+        int greatest = number1;
+
+        if (number2 > greatest) {
+            greatest = number2;
+        }
+        if (number3 > greatest) {
+            greatest = number3;
+        }
+
+        return greatest;
+    }
+
+    public static int smallest(int num1, int num2) {
+        if (num1 < num2) {
+            return num1;
+        }
+        return num2;
+    }
+
+    public static int sum(int num1, int num2, int num3, int num4) {
+
+        return num1 + num2 + num3 + num4;
+    }
+
+    public static String word() {
+        return "Hello";
+    }
+
+    public static int numberUno() {
+        return 1;
     }
 
     public static void divisibleByThreeInRange(int beginning, int end) {
 
-        for(int i = beginning; i <= end; i++){
-            if(i % 3 == 0){
+        for (int i = beginning; i <= end; i++) {
+            if (i % 3 == 0) {
                 System.out.println(i);
             }
 
