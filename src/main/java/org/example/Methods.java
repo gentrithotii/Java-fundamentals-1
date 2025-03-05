@@ -17,16 +17,32 @@ public class Methods {
 //        System.out.println("Sum: " + answer);
 //        int answer = greatest(2, 1, 7);
 //        System.out.println(answer);
-        double result = average(4, 3, 6, 1);
-        System.out.println("Average: " + result);
+//        double result = average(4, 3, 6, 1);
+//        System.out.println("Average: " + result);
+//        printStars(5);
+        printSquare(4);
 
+    }
+
+    public static void printSquare(int size) {
+        for (int i = 1; i <= size; i++) {
+            printStars(size);
+        }
+    }
+
+    public static void printStars(int number) {
+
+        for (int i = 1; i <= number; i++) {
+            System.out.print("*");
+        }
+        System.out.println(" ");
     }
 
     public static double average(int num1, int num2, int num3, int num4) {
         int storeSum = sum(num1, num2, num3, num4);
-        int numberOfNums = 4;
+        int numberOfNumbers = 4;
 
-        return (double) storeSum / numberOfNums;
+        return (double) storeSum / numberOfNumbers;
     }
 
     public static int greatest(int number1, int number2, int number3) {
