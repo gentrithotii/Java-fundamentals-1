@@ -20,13 +20,18 @@ public class Methods {
 //        double result = average(4, 3, 6, 1);
 //        System.out.println("Average: " + result);
 //        printStars(5);
-        printSquare(4);
+//        printSquare(4);
+//        printRectangle(17, 3);
+        printTriangle(4);
 
     }
 
-    public static void printSquare(int size) {
+    public static void printTriangle(int size) {
+        int amountOfStars = 1;
         for (int i = 1; i <= size; i++) {
-            printStars(size);
+
+            printStars(amountOfStars);
+            amountOfStars++;
         }
     }
 
@@ -36,6 +41,19 @@ public class Methods {
             System.out.print("*");
         }
         System.out.println(" ");
+    }
+
+    public static void printRectangle(int width, int height) {
+
+        for (int i = 1; i <= height; i++) {
+            printStars(width);
+        }
+    }
+
+    public static void printSquare(int size) {
+        for (int i = 1; i <= size; i++) {
+            printStars(size);
+        }
     }
 
     public static double average(int num1, int num2, int num3, int num4) {
