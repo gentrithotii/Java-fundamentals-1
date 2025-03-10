@@ -28,10 +28,9 @@ public class Methods {
     }
 
     public static void christmasTree(int height) {
-        int treeBase = 0;
-        int amountOfStars = 0;
-        int amountOfWhiteSpaces = height;
+        int treeBase = 0, amountOfStars = 0, amountOfWhiteSpaces = height, amountOfStumpStars = 3;
 
+        //Prints tree
         for (int i = 1; i <= height; i++) {
             printSpaces(amountOfWhiteSpaces);
             printStars(amountOfStars + i);
@@ -39,13 +38,13 @@ public class Methods {
             amountOfStars++;
             amountOfWhiteSpaces--;
         }
-        int test = treeBase / 2;
-        for(int i = 0; i <= 1; i++){
-        printSpaces(test);
-        printStars(3);
+
+        //Prints tree stump
+        int startPointForStump = treeBase / 2;
+        for (int i = 0; i <= 1; i++) {
+            printSpaces(startPointForStump);
+            printStars(amountOfStumpStars);
         }
-
-
 
     }
 
