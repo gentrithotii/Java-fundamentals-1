@@ -22,16 +22,49 @@ public class Methods {
 //        printStars(5);
 //        printSquare(4);
 //        printRectangle(17, 3);
-        printTriangle(4);
+//        printTriangle(4);
+        christmasTree(5);
 
     }
 
-    public static void printTriangle(int size) {
-        int amountOfStars = 1;
-        for (int i = 1; i <= size; i++) {
+    public static void christmasTree(int height) {
+        int treeBase = 0;
+        int amountOfStars = 0;
+        int amountOfWhiteSpaces = height;
 
-            printStars(amountOfStars);
+        for (int i = 1; i <= height; i++) {
+            printSpaces(amountOfWhiteSpaces);
+            printStars(amountOfStars + i);
+            treeBase = amountOfStars + i;
             amountOfStars++;
+            amountOfWhiteSpaces--;
+        }
+        int test = treeBase / 2;
+        for(int i = 0; i <= 1; i++){
+        printSpaces(test);
+        printStars(3);
+        }
+
+
+
+    }
+
+
+//    public static void printTriangle(int size) {
+//        int amountOfStars = 1;
+//        int amountOfWhiteSpace = size;
+//        for (int i = 1; i <= size; i++) {
+//            printSpaces(amountOfWhiteSpace);
+//            printStars(amountOfStars);
+//            amountOfStars++;
+//            amountOfWhiteSpace--;
+//        }
+//    }
+
+    public static void printSpaces(int size) {
+        for (int i = 1; i <= size; i++) {
+            System.out.print(" ");
+
         }
     }
 
@@ -42,6 +75,7 @@ public class Methods {
         }
         System.out.println(" ");
     }
+
 
     public static void printRectangle(int width, int height) {
 
