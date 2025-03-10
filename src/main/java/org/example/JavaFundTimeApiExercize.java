@@ -29,10 +29,18 @@ public class JavaFundTimeApiExercize {
         String stringLocalDate = "1994-10-24";
         LocalDate gentritBirthDate = LocalDate.parse(stringLocalDate);
         String testFormat = gentritBirthDate.format(formatter);
+
         System.out.println(gentritBirthDate);
         System.out.println(testFormat);
 
         //Exercise 6
+        LocalDate currentDate = LocalDate.now();
+        currentDate = currentDate.plusYears(10).minusMonths(10);
+        DateTimeFormatter formatFun = DateTimeFormatter.ofPattern("yyyy, MMMM dd EEEE");
+        String textedMonth = currentDate.format(formatFun);
+        System.out.println(textedMonth);
+
+        //Exercise 7
 
     }
 }
