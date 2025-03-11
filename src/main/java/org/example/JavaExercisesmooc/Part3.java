@@ -11,11 +11,57 @@ public class Part3 {
 //        thirdElementExercise(userInput);
 //        secondPlusThird(userInput);
 //        generateIndexOutOfBounds();
-        firstAndLastInTheList(userInput);
-
-
+//        firstAndLastInTheList(userInput);
+//        rememberTheseNumbers(userInput);
+        greatestInList(userInput);
     }
 
+    public static void greatestInList(Scanner sc) {
+        ArrayList<Integer> intList = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the numbers to add to the list: ");
+            int userNum = sc.nextInt();
+
+            if (userNum == -1) {
+                break;
+            } else {
+                intList.add(userNum);
+            }
+        }
+
+        int biggest = intList.getFirst();
+        for (int i = 0; i < intList.size(); i++) {
+            int num = intList.get(i);
+            if (biggest < num) {
+                biggest = num;
+            }
+        }
+        System.out.println(biggest);
+    }
+
+    public static void rememberTheseNumbers(Scanner sc) {
+        ArrayList<Integer> intList = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the numbers to add to the list: ");
+            int userNum = sc.nextInt();
+
+            if (userNum == -1) {
+                break;
+            } else {
+                intList.add(userNum);
+            }
+        }
+        System.out.println("From what index: ");
+        int fromIndexOf = sc.nextInt();
+        System.out.println("To what index: ");
+        int toIndexOf = sc.nextInt();
+
+        for (int i = fromIndexOf; i <= toIndexOf; i++) {
+            System.out.println(intList.get(i));
+        }
+    }
 
     public static void firstAndLastInTheList(Scanner sc) {
         ArrayList<String> stringArrayList = new ArrayList<>();
@@ -43,7 +89,7 @@ public class Part3 {
 
     public static void generateIndexOutOfBounds() {
         ArrayList<Integer> integerArrayList = new ArrayList<>(Arrays.asList(1, 2, 3));
-        integerArrayList.get(3);
+        System.out.println(integerArrayList.get(3));
     }
 
     public static void secondPlusThird(Scanner sc) {
