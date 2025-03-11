@@ -1,6 +1,6 @@
 package org.example.JavaFundamentals;
 
-public class JavaFundTwoExercize {
+public class JavaFundTwoExercise {
     public static void main(String[] args) {
         String exercize1String = "Java";
         System.out.println(exercize1String.length());
