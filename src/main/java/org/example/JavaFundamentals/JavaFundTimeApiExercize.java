@@ -55,6 +55,17 @@ public class JavaFundTimeApiExercize {
         System.out.println("---------------------------------------");
 
         //Exercise 8
+        Period periodToBeAdded = Period.of(4, 7, 29);
+        DateTimeFormatter format2 = DateTimeFormatter.ofPattern("yyyy, MMMM EEEE dd");
+        LocalDate todayDateTwo;
+        todayDateTwo = todayDate.plusYears(periodToBeAdded.getYears()).plusMonths(periodToBeAdded.getMonths()).plusDays(periodToBeAdded.getDays());
+        String formatedDate = todayDateTwo.format(format2);
+        System.out.println(formatedDate);
+
+        System.out.println("---------------------------------------");
+
+        //Exercise 9
+
 
     }
 }
