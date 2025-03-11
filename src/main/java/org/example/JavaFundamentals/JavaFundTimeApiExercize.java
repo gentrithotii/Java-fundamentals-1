@@ -1,9 +1,8 @@
-package org.example;
+package org.example.JavaFundamentals;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAmount;
-import java.util.Date;
 
 public class JavaFundTimeApiExercize {
     public static void main(String[] args) {
@@ -12,6 +11,8 @@ public class JavaFundTimeApiExercize {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM, dd EEEE, yyyy");
         String text = todayDate.format(formatter);
         System.out.println(text);
+
+        System.out.println("---------------------------------------");
 
         //Exercise 3
         LocalDate nowDate = LocalDate.now();
@@ -25,6 +26,9 @@ public class JavaFundTimeApiExercize {
             System.out.println(lastMonday.format(formater));
         }
 
+        System.out.println("---------------------------------------");
+
+
         //Exercise 4 && 5
         String stringLocalDate = "1994-10-24";
         LocalDate gentritBirthDate = LocalDate.parse(stringLocalDate);
@@ -33,6 +37,8 @@ public class JavaFundTimeApiExercize {
         System.out.println(gentritBirthDate);
         System.out.println(testFormat);
 
+        System.out.println("---------------------------------------");
+
         //Exercise 6
         LocalDate currentDate = LocalDate.now();
         currentDate = currentDate.plusYears(10).minusMonths(10);
@@ -40,7 +46,15 @@ public class JavaFundTimeApiExercize {
         String textedMonth = currentDate.format(formatFun);
         System.out.println(textedMonth);
 
+        System.out.println("---------------------------------------");
+
         //Exercise 7
+        Period period = Period.between(gentritBirthDate, currentDate);
+        System.out.println("Amount of years elapsed: " + period.getYears() + " | " + " Amount of Months: " + period.getMonths() + " | " + " Amount of days: " + period.getDays());
+
+        System.out.println("---------------------------------------");
+
+        //Exercise 8
 
     }
 }
