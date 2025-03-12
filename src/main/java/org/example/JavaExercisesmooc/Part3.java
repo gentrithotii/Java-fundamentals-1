@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class Part3 {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
-
+        ArrayList<Integer> numList = new ArrayList<>(Arrays.asList(3, 2, 6, -1, 5, 1));
+        ArrayList<String> stringList = new ArrayList<>(Arrays.asList("First", "Second", "Third"));
+        int[] numArray = new int[]{1, 3, 5, 7, 9};
 //        thirdElementExercise(userInput);
 //        secondPlusThird(userInput);
 //        generateIndexOutOfBounds();
@@ -18,16 +20,67 @@ public class Part3 {
 //        indexOfSmallestNum(userInput);
 //        sumAListAndAverage(userInput);
 //        findStringOnList(userInput);
-        ArrayList<Integer> numList = new ArrayList<>(Arrays.asList(3, 2, 6, -1, 5, 1));
-        printNumbersInRange(numList, 3, 10);
+//        printNumbersInRange(numList, 3, 10);
+//        int sum = sum(numList);
+//        removeLast(stringList);
+//        swapAtGivenIndices(numArray, userInput);
+        checkIfNumExists(numArray, userInput);
+
 
     }
 
+    public static void checkIfNumExists(int[] numArray, Scanner sc) {
+        boolean userNumFound = false;
+        System.out.print("Enter the number that your looking for in the array: ");
+        int userInput = sc.nextInt();
+
+        for (int i = 0; i < numArray.length; i++) {
+            if (numArray[i] == userInput) {
+                System.out.println(userInput + " found at index of " + i);
+                userNumFound = true;
+            }
+        }
+        if (!userNumFound) {
+            System.out.println(userInput + " was not found.");
+        }
+    }
+
+    public static void swapAtGivenIndices(int[] numArray, Scanner sc) {
+        for (int j : numArray) {
+            System.out.println(j);
+        }
+
+        System.out.print("Give two indices to swap: ");
+        int indiceOne = sc.nextInt();
+        int indiceTwo = sc.nextInt();
+
+        int helper = numArray[indiceOne];
+        numArray[indiceOne] = numArray[indiceTwo];
+        numArray[indiceTwo] = helper;
+
+        for (int j : numArray) {
+            System.out.println(j);
+        }
+
+
+    }
+
+    public static void removeLast(ArrayList<String> strList) {
+        strList.remove(strList.size() - 1);
+    }
+
+    public static int sum(ArrayList<Integer> numbers) {
+        int result = 0;
+        for (int number : numbers) {
+            result += number;
+        }
+        return result;
+    }
 
     public static void printNumbersInRange(ArrayList<Integer> numbers, int lowerLimit, int upperLimit) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) >= lowerLimit && numbers.get(i) <= upperLimit) {
-                System.out.println(numbers.get(i));
+        for (Integer number : numbers) {
+            if (number >= lowerLimit && number <= upperLimit) {
+                System.out.println(number);
             }
         }
     }
