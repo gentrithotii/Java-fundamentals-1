@@ -13,7 +13,64 @@ public class Part3 {
 //        generateIndexOutOfBounds();
 //        firstAndLastInTheList(userInput);
 //        rememberTheseNumbers(userInput);
-        greatestInList(userInput);
+//        greatestInList(userInput);
+//        indexOfNumList(userInput);
+        indexOfSmallestNum(userInput);
+
+    }
+
+    public static void indexOfSmallestNum(Scanner sc) {
+        ArrayList<Integer> numList = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter numbers to add in the list , type 9999 to end the loop: ");
+            int userNum = sc.nextInt();
+            if (userNum == 9999) {
+                break;
+            }
+            numList.add(userNum);
+        }
+        if (numList.isEmpty()) {
+            System.out.println("Get some numbers in noob");
+            return;
+        }
+
+        int smallestNum = numList.get(0);
+
+        for (int num : numList) {
+            if (smallestNum > num) {
+                smallestNum = num;
+            }
+        }
+        System.out.println("Smallest number is : " + smallestNum);
+        for (int i = 0; i < numList.size(); i++) {
+            if (smallestNum == numList.get(i)) {
+                System.out.println("Found at index: " + i);
+            }
+        }
+    }
+
+    public static void indexOfNumList(Scanner sc) {
+        ArrayList<Integer> intList = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the numbers to add to the list: ");
+            int userNum = sc.nextInt();
+
+            if (userNum == -1) {
+                break;
+            } else {
+                intList.add(userNum);
+            }
+        }
+
+        System.out.print("Enter the num your looking for: ");
+        int numToBeSearched = sc.nextInt();
+        for (int i = 0; i < intList.size(); i++) {
+            if (numToBeSearched == intList.get(i)) {
+                System.out.println(intList.get(i) + " is at index of: " + i);
+            }
+        }
     }
 
     public static void greatestInList(Scanner sc) {
