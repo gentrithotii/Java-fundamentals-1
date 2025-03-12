@@ -9,7 +9,7 @@ public class Part3 {
         Scanner userInput = new Scanner(System.in);
         ArrayList<Integer> numList = new ArrayList<>(Arrays.asList(3, 2, 6, -1, 5, 1));
         ArrayList<String> stringList = new ArrayList<>(Arrays.asList("First", "Second", "Third"));
-        int[] numArray = new int[]{1, 3, 5, 7, 9};
+        int[] numArray = new int[]{5, 1, 3, 4, 2};
 //        thirdElementExercise(userInput);
 //        secondPlusThird(userInput);
 //        generateIndexOutOfBounds();
@@ -24,9 +24,40 @@ public class Part3 {
 //        int sum = sum(numList);
 //        removeLast(stringList);
 //        swapAtGivenIndices(numArray, userInput);
-        checkIfNumExists(numArray, userInput);
+//        checkIfNumExists(numArray, userInput);
+//        System.out.println(sumOfNumbersInArray(numArray));
+//        printNeatly(numArray);
+        printArrayInStars(numArray);
 
+    }
 
+    public static void printArrayInStars(int[] numArray) {
+
+        for (int i = 0; i < numArray.length; i++) {
+            printStars(numArray[i]);
+        }
+    }
+
+    public static void printStars(int numberOfStars) {
+        for (int i = 0; i < numberOfStars; i++) {
+            System.out.print("*");
+        }
+        System.out.println(" ");
+    }
+
+    public static void printNeatly(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
+            System.out.print(", ");
+        }
+    }
+
+    public static int sumOfNumbersInArray(int[] numberArray) {
+        int sum = 0;
+        for (int i = 0; i < numberArray.length; i++) {
+            sum += numberArray[i];
+        }
+        return sum;
     }
 
     public static void checkIfNumExists(int[] numArray, Scanner sc) {
