@@ -15,8 +15,46 @@ public class Part3 {
 //        rememberTheseNumbers(userInput);
 //        greatestInList(userInput);
 //        indexOfNumList(userInput);
-        indexOfSmallestNum(userInput);
+//        indexOfSmallestNum(userInput);
+//        sumAListAndAverage(userInput);
+        findStringOnList(userInput);
+    }
 
+    public static void findStringOnList(Scanner sc) {
+        ArrayList<String> stringArray = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter the names you want to add: ");
+            String userInput = sc.nextLine();
+            if (userInput.isEmpty()) {
+                break;
+            }
+            stringArray.add(userInput);
+        }
+        System.out.println("--------------------------------------------");
+        System.out.print("Enter the name you want to find: ");
+        String userToFind = sc.nextLine();
+
+        System.out.println((stringArray.contains(userToFind)) ? userToFind + " was found " : userToFind + " was not found");
+    }
+
+    public static void sumAListAndAverage(Scanner sc) {
+        ArrayList<Integer> numList = new ArrayList<>();
+        while (true) {
+            System.out.print("Enter numbers to add in the list , type 9999 to end the loop: ");
+            int userNum = sc.nextInt();
+            if (userNum == -1) {
+                break;
+            }
+            numList.add(userNum);
+        }
+        int sumToAdd = 0;
+        for (int listNumbers : numList) {
+            sumToAdd += listNumbers;
+        }
+        double averageSum = (double) sumToAdd / numList.size();
+        System.out.println("Sum: " + sumToAdd);
+        System.out.println("Average: " + averageSum);
     }
 
     public static void indexOfSmallestNum(Scanner sc) {
