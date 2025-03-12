@@ -17,7 +17,19 @@ public class Part3 {
 //        indexOfNumList(userInput);
 //        indexOfSmallestNum(userInput);
 //        sumAListAndAverage(userInput);
-        findStringOnList(userInput);
+//        findStringOnList(userInput);
+        ArrayList<Integer> numList = new ArrayList<>(Arrays.asList(3, 2, 6, -1, 5, 1));
+        printNumbersInRange(numList, 3, 10);
+
+    }
+
+
+    public static void printNumbersInRange(ArrayList<Integer> numbers, int lowerLimit, int upperLimit) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) >= lowerLimit && numbers.get(i) <= upperLimit) {
+                System.out.println(numbers.get(i));
+            }
+        }
     }
 
     public static void findStringOnList(Scanner sc) {
