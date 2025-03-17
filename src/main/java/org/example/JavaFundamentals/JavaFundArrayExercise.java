@@ -21,10 +21,11 @@ public class JavaFundArrayExercise {
                 break;
             }
         }
-        System.out.println("Your numbers are:");
+        System.out.print("Your numbers are:");
+        System.out.print(", ");
         for (int i = 0; i < userNumbers.length; i++) {
             System.out.print(userNumbers[i]);
-            System.out.println(" ");
+            System.out.print(" ");
         }
     }
 
@@ -34,6 +35,7 @@ public class JavaFundArrayExercise {
 
         return newArray;
     }
+
 
 }
 
