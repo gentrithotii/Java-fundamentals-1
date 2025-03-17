@@ -6,10 +6,39 @@ import java.util.Scanner;
 public class JavaFundArrayExercise {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
-        int[] arrayNumbers = new int[0];
-        arrayNumbers = storeIntInArray(userInput, arrayNumbers);
-        printUserArray(arrayNumbers);
-        indexOfArrayNum(userInput, arrayNumbers);
+        String[] cityArray = new String[]{"Paris", "London", "New York", "Stockholm"};
+//        int[] arrayNumbers2 = new int[]{1, 15, 20};
+//        int[] copyArrayNumbers2 = copyArrayOfInt(arrayNumbers2);
+//        System.out.println(Arrays.toString(copyArrayNumbers2));
+//        String[][] twoDimensionArray = new String[][]{{"France", "Paris"}, {"Sweden", "Stockholm"}};
+//        twoDimensionArrayPrint(twoDimensionArray);
+
+
+        //        int[] arrayNumbers = new int[0];
+//        arrayNumbers = storeIntInArray(userInput, arrayNumbers);
+//        printUserArray(arrayNumbers);
+//        indexOfArrayNum(userInput, arrayNumbers);
+//        sortArrayByLetter(cityArray);
+
+    }
+
+    private static void twoDimensionArrayPrint(String[][] twoDimensionArray) {
+        for (int i = 0; i < twoDimensionArray.length; i++) {
+            for (int j = 0; j < twoDimensionArray.length; j++) {
+                System.out.println(" ");
+                System.out.print(twoDimensionArray[i][j] + " ");
+            }
+            System.out.println(" ");
+        }
+    }
+
+
+    public static int[] copyArrayOfInt(int[] arrayToCopy) {
+        return Arrays.copyOf(arrayToCopy, arrayToCopy.length);
+    }
+
+    public static void sortArrayByLetter(String[] arrayOfStrings) {
+        Arrays.sort(arrayOfStrings, String.CASE_INSENSITIVE_ORDER);
     }
 
     public static void indexOfArrayNum(Scanner userInput, int[] numberArray) {
