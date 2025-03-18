@@ -1,6 +1,7 @@
 package org.example.JavaFundamentals;
 
 import java.security.spec.RSAOtherPrimeInfo;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -11,7 +12,20 @@ public class JavaFundArrayExercise {
         int[] exerciseSumArray = new int[]{43, 5, 23, 17, 2, 14};
         int[] exerciseHoldOddNumbers = new int[]{1, 2, 4, 7, 9, 12};
         int[] exerciseDuplicateNumbers = new int[]{20, 20, 40, 20, 30, 40, 50, 60, 50};
-        int[][] multiplicationArray = new int[][]{{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}};
+        int[][] multiplicationArrayExample = new int[][]{
+                {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+                {2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {4, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {5, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {6, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {7, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {8, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {9, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {10, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        };
+        int[][] multiplicationArray = new int[10][10];
+
 //        int[] arrayNumbers2 = new int[]{1, 15, 20};
 //        int[] copyArrayNumbers2 = copyArrayOfInt(arrayNumbers2);
 //        System.out.println(Arrays.toString(copyArrayNumbers2));
@@ -29,7 +43,25 @@ public class JavaFundArrayExercise {
 //        double sumOfArray = sumIntArray(exerciseSumArray);
 //        printOddNumbers(exerciseHoldOddNumbers);
 //       RemoveDuplicateNumbers(exerciseDuplicateNumbers);
+        printMultiplicationArray(multiplicationArray);
 
+    }
+
+    public static void printMultiplicationArray(int[][] multiplicationArray) {
+        int firstLoopNum, secondLoopNum;
+        for (int i = 0; i < multiplicationArray.length; ++i) {
+
+            firstLoopNum = i + 1;
+
+            for (int j = 0; j < multiplicationArray.length; ++j) {
+
+                secondLoopNum = j + 1;
+                multiplicationArray[i][j] = firstLoopNum * secondLoopNum;
+
+                System.out.printf("%5d", multiplicationArray[i][j]);
+            }
+            System.out.println(" ");
+        }
     }
 
 
