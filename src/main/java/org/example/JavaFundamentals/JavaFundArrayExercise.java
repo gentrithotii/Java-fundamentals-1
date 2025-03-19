@@ -37,7 +37,7 @@ public class JavaFundArrayExercise {
 //        addNumbersToArrayAndReverse(userInput, numbersToAdd);
 //        createTwoDimensionArrayOfThree(twoDimensionArray);
         combinedAndSortedByOddToEven = orderArrayOddToEvenLastTwoArrays(firstArrayRandomNumbs, secondArrayRandomNumbs);
-        System.out.println(Arrays.toString(combinedAndSortedByOddToEven));
+        System.out.println("Sorted odd to even: " + Arrays.toString(combinedAndSortedByOddToEven));
     }
 
     public static int[] orderArrayOddToEvenLastTwoArrays(int[] arrayOne, int[] arrayTwo) {
