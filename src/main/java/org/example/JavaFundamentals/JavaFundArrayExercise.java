@@ -36,11 +36,11 @@ public class JavaFundArrayExercise {
 //        printMultiplicationArray(multiplicationArray);
 //        addNumbersToArrayAndReverse(userInput, numbersToAdd);
 //        createTwoDimensionArrayOfThree(twoDimensionArray);
-        combinedAndSortedByOddToEven = orderArrayOddToEvenLastTwoArrays(firstArrayRandomNumbs, secondArrayRandomNumbs);
+        combinedAndSortedByOddToEven = combineTwoArrays(firstArrayRandomNumbs, secondArrayRandomNumbs);
         System.out.println("Sorted odd to even: " + Arrays.toString(combinedAndSortedByOddToEven));
     }
 
-    public static int[] orderArrayOddToEvenLastTwoArrays(int[] arrayOne, int[] arrayTwo) {
+    public static int[] combineTwoArrays(int[] arrayOne, int[] arrayTwo) {
         int[] combinedArray = new int[arrayOne.length + arrayTwo.length];
         for (int i = 0; i < arrayOne.length; i++) {
             combinedArray[i] = arrayOne[i];
