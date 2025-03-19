@@ -12,19 +12,9 @@ public class JavaFundArrayExercise {
         int[] exerciseSumArray = new int[]{43, 5, 23, 17, 2, 14};
         int[] exerciseHoldOddNumbers = new int[]{1, 2, 4, 7, 9, 12};
         int[] exerciseDuplicateNumbers = new int[]{20, 20, 40, 20, 30, 40, 50, 60, 50};
-        int[][] multiplicationArrayExample = new int[][]{
-                {1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-                {2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {4, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {5, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {6, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {7, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {8, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {9, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                {10, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        };
         int[][] multiplicationArray = new int[10][10];
+        int[][] twoDimensionArray = new int[3][3];
+        int[] numbersToAdd = new int[0];
 
 //        int[] arrayNumbers2 = new int[]{1, 15, 20};
 //        int[] copyArrayNumbers2 = copyArrayOfInt(arrayNumbers2);
@@ -43,8 +33,79 @@ public class JavaFundArrayExercise {
 //        double sumOfArray = sumIntArray(exerciseSumArray);
 //        printOddNumbers(exerciseHoldOddNumbers);
 //       RemoveDuplicateNumbers(exerciseDuplicateNumbers);
-        printMultiplicationArray(multiplicationArray);
+//        printMultiplicationArray(multiplicationArray);
+//        addNumbersToArrayAndReverse(userInput, numbersToAdd);
+        createTwoDimensionArrayOfThree(twoDimensionArray);
 
+    }
+
+    public static void createTwoDimensionArrayOfThree(int[][] numberArray) {
+        int numOne, numTwo;
+        for (int i = 0; i < numberArray.length; i++) {
+            numOne = i + 1;
+            for (int j = 0; j < numberArray.length; j++) {
+                numTwo = j + 1;
+                numberArray[i][j] = numOne * numTwo;
+
+                System.out.printf("%5d", numberArray[i][j]);
+
+            }
+            System.out.println(" ");
+        }
+
+        getDiagonalFromArray(numberArray);
+
+    }
+
+    private static void getDiagonalFromArray(int[][] numberArray) {
+        System.out.println(" ");
+        for (int i = 0, k = 0; i < numberArray.length; i++, k++) {
+
+            for (int j = 0; j < numberArray.length; j++) {
+
+                if (k == j) {
+                    System.out.print(numberArray[i][j]);
+                }
+            }
+
+            System.out.print(" ");
+        }
+    }
+
+    public static void addNumbersToArrayAndReverse(Scanner sc, int[] numArray) {
+        while (true) {
+            System.out.print("Enter the number you want to add and enter -1 when you want to stop adding: ");
+            int userNum = sc.nextInt();
+            if (userNum == -1) {
+                System.out.println("You quit");
+                break;
+            }
+            numArray = addOneNumberToArray(numArray, userNum);
+        }
+        System.out.println(Arrays.toString(numArray));
+        int[] reversedArray = reversArrayOfInt(numArray);
+
+        System.out.println(Arrays.toString(reversedArray));
+    }
+
+    public static int[] reversArrayOfInt(int[] oldArray) {
+        int[] reversedArray = new int[oldArray.length];
+        int arrayStartPoint = 0;
+        for (int i = oldArray.length - 1, j = 0; i >= arrayStartPoint; i--, j++) {
+            reversedArray[j] = oldArray[i];
+        }
+        return reversedArray;
+    }
+
+    public static int[] addOneNumberToArray(int[] numbers, int numberToAdd) {
+        int[] newNumbers = new int[numbers.length + 1];
+
+        for (int i = 0; i < numbers.length; i++) {
+            newNumbers[i] = numbers[i];
+        }
+
+        newNumbers[newNumbers.length - 1] = numberToAdd;
+        return newNumbers;
     }
 
     public static void printMultiplicationArray(int[][] multiplicationArray) {
