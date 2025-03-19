@@ -27,8 +27,63 @@ public class Part3 {
 //        checkIfNumExists(numArray, userInput);
 //        System.out.println(sumOfNumbersInArray(numArray));
 //        printNeatly(numArray);
-        printArrayInStars(numArray);
+//        printArrayInStars(numArray);
+//        printThrice(userInput);
+//        isItTrue(userInput);
+//        logInUser(userInput);
+        lineByLine(userInput);
+    }
 
+    public static void lineByLine(Scanner sc) {
+        String[] splitUserText;
+        while (true) {
+            System.out.print("Enter text that is gone be split by white space keep empty if you want to stop: ");
+            String userInput = sc.nextLine();
+            if (userInput.isEmpty()) {
+                break;
+            }
+            splitUserText = userInput.split(" ");
+
+            for (int i = 0; i < splitUserText.length; i++) {
+                if (splitUserText[i].contains("av")) {
+                    System.out.println(splitUserText[i]);
+                }
+            }
+        }
+
+    }
+
+    public static void logInUser(Scanner sc) {
+        String user1 = "alex";
+        String user2 = "emma";
+        String user1Password = "sunshine";
+        String user2Password = "haskell";
+
+        System.out.print("Enter username: ");
+        String userInput = sc.nextLine();
+        System.out.print("Enter password: ");
+        String userInputPassword = sc.nextLine();
+
+        if (user1.equals(userInput) && user1Password.equals(userInputPassword) || user2.equals(userInput) && user2Password.equals(userInputPassword)) {
+            System.out.print("You have successfully logged in!");
+        } else {
+            System.out.print("Incorrect username or password! ");
+        }
+    }
+
+    public static void isItTrue(Scanner sc) {
+        System.out.print("Give a string: ");
+        String userInput = sc.nextLine();
+        userInput = userInput.equals("true") ? "You got it right. " : "Try again! ";
+
+        System.out.println(userInput);
+    }
+
+    public static void printThrice(Scanner userInput) {
+        //Without loop
+        System.out.print("Enter the string you want to print 3 times: ");
+        String userText = userInput.nextLine();
+        System.out.println(userText + userText + userText);
     }
 
     public static void printArrayInStars(int[] numArray) {
