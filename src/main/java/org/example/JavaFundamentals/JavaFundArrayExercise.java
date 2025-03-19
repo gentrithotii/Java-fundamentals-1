@@ -1,7 +1,5 @@
 package org.example.JavaFundamentals;
 
-import java.security.spec.RSAOtherPrimeInfo;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,7 +13,9 @@ public class JavaFundArrayExercise {
         int[][] multiplicationArray = new int[10][10];
         int[][] twoDimensionArray = new int[3][3];
         int[] numbersToAdd = new int[0];
-
+        int[] firstArrayRandomNumbs = new int[]{15, 34, 22, 12, 63, 103, 52, 12, 53, 32, 635, 144, 522};
+        int[] secondArrayRandomNumbs = new int[]{12, 43, 543, 4, 32, 234, 234, 342, 34, 54, 543, 534, 5, 453, 5, 34, 4, 75, 98, 3, 2};
+        int[] combinedAndSortedByOddToEven = new int[0];
 //        int[] arrayNumbers2 = new int[]{1, 15, 20};
 //        int[] copyArrayNumbers2 = copyArrayOfInt(arrayNumbers2);
 //        System.out.println(Arrays.toString(copyArrayNumbers2));
@@ -35,8 +35,39 @@ public class JavaFundArrayExercise {
 //       RemoveDuplicateNumbers(exerciseDuplicateNumbers);
 //        printMultiplicationArray(multiplicationArray);
 //        addNumbersToArrayAndReverse(userInput, numbersToAdd);
-        createTwoDimensionArrayOfThree(twoDimensionArray);
+//        createTwoDimensionArrayOfThree(twoDimensionArray);
+        combinedAndSortedByOddToEven = orderArrayOddToEvenLastTwoArrays(firstArrayRandomNumbs, secondArrayRandomNumbs);
+        System.out.println(Arrays.toString(combinedAndSortedByOddToEven));
+    }
 
+    public static int[] orderArrayOddToEvenLastTwoArrays(int[] arrayOne, int[] arrayTwo) {
+        int[] combinedArray = new int[arrayOne.length + arrayTwo.length];
+        for (int i = 0; i < arrayOne.length; i++) {
+            combinedArray[i] = arrayOne[i];
+        }
+
+        int startFromSecondArrayNumbers = arrayOne.length;
+        for (int i = startFromSecondArrayNumbers, j = 0; j < arrayTwo.length; i++, j++) {
+            combinedArray[i] = arrayTwo[j];
+        }
+        combinedArray = sortEvenToOdd(combinedArray);
+
+        return combinedArray;
+    }
+
+    public static int[] sortEvenToOdd(int[] numberArray) {
+        int leftSide = 0, rightSide = numberArray.length - 1;
+        int[] orderedArrayNum = new int[numberArray.length];
+        for (int i = 0; i < numberArray.length; i++) {
+            if (numberArray[i] % 2 == 0) {
+                orderedArrayNum[rightSide] = numberArray[i];
+                rightSide--;
+            } else {
+                orderedArrayNum[leftSide] = numberArray[i];
+                leftSide++;
+            }
+        }
+        return orderedArrayNum;
     }
 
     public static void createTwoDimensionArrayOfThree(int[][] numberArray) {
