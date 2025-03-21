@@ -35,6 +35,26 @@ public class Part3 {
 //        logInUser(userInput);
 //        lineByLine(userInput);
 //        firstWordPrint(userInput);
+//        lastWordPrint(userInput);
+    }
+
+    public static void lastWordPrint(Scanner sc) {
+
+        while (true) {
+            System.out.print("Enter words you want to print the last string: ");
+            String userInput = sc.nextLine();
+            String[] splitUserInput = userInput.split(" ");
+
+            if (userInput.isEmpty()) {
+                break;
+            }
+
+            for (int i = 0; i < splitUserInput.length; i++) {
+                if (splitUserInput[i] == splitUserInput[splitUserInput.length - 1]) {
+                    System.out.println(splitUserInput[i]);
+                }
+            }
+        }
     }
 
     public static void firstWordPrint(Scanner sc) {
