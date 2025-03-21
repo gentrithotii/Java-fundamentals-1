@@ -1,5 +1,7 @@
 package org.example.JavaExercisesmooc;
 
+import com.sun.source.tree.WhileLoopTree;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -31,7 +33,25 @@ public class Part3 {
 //        printThrice(userInput);
 //        isItTrue(userInput);
 //        logInUser(userInput);
-        lineByLine(userInput);
+//        lineByLine(userInput);
+//        firstWordPrint(userInput);
+    }
+
+    public static void firstWordPrint(Scanner sc) {
+        while (true) {
+            System.out.print("Enter a long word to get onle the first one: ");
+            String userInput = sc.nextLine();
+            String[] splitUserInput = userInput.split(" ");
+            if (userInput.isEmpty()) {
+                break;
+            }
+
+            for (int i = 0; i < splitUserInput.length; i++) {
+                if (i == 0) {
+                    System.out.println(splitUserInput[i]);
+                }
+            }
+        }
     }
 
     public static void lineByLine(Scanner sc) {
