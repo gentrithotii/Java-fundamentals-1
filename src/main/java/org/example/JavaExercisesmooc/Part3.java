@@ -4,6 +4,7 @@ import com.sun.source.tree.WhileLoopTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Part3 {
@@ -36,6 +37,62 @@ public class Part3 {
 //        lineByLine(userInput);
 //        firstWordPrint(userInput);
 //        lastWordPrint(userInput);
+//        ageOfTheOldest(userInput);
+        personalDetails(userInput);
+
+    }
+
+    public static void personalDetails(Scanner sc) {
+        int count = 0;
+        double average = 0;
+        String longestName = " ";
+
+        while (true) {
+            System.out.print("Enter words you want to print the last string: ");
+            String userInput = sc.nextLine();
+            String[] splitUserInput = userInput.split(",");
+
+            if (userInput.isEmpty()) {
+                break;
+            }
+
+            String currentUserName = splitUserInput[0];
+            int age = Integer.parseInt(splitUserInput[1]);
+
+            if (currentUserName.length() > longestName.length()) {
+                longestName = currentUserName;
+            }
+            count++;
+            average = (average + age);
+            System.out.println(average);
+        }
+        average = average / count;
+        System.out.println("The longest name is: " + longestName + " Average age is:  " + average);
+    }
+
+    public static void ageOfTheOldest(Scanner sc) {
+        int oldestAge = 0;
+        String nameOfOldest = "";
+        while (true) {
+            System.out.print("Enter words you want to print the last string: ");
+            String userInput = sc.nextLine();
+            String[] splitUserInput = userInput.split(",");
+
+            if (userInput.isEmpty()) {
+                break;
+            }
+            String name = splitUserInput[0];
+            int age = Integer.parseInt(splitUserInput[1].trim());
+
+            if (age > oldestAge) {
+                oldestAge = age;
+                nameOfOldest = name;
+            }
+
+
+        }
+
+        System.out.println("The oldest age: " + oldestAge + " and the name is: " + nameOfOldest);
     }
 
     public static void lastWordPrint(Scanner sc) {
