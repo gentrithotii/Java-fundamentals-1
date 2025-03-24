@@ -18,12 +18,92 @@ public class Part4 {
 //        banana.printProduct();
 //        DecreasingCounter counter = new DecreasingCounter(100);
 //        counter.printValue();
+//        Debt.testMortgage();
+//        Song garden = new Song("In The Garden", 10910);
+//        garden.printExercise();
+
 
     }
 
     public static void transferMoney(Account accountOne, Account accountTwo, double amountOfTransfer) {
         accountOne.withdraw(amountOfTransfer);
         accountTwo.deposit(amountOfTransfer);
+    }
+}
+
+class Film {
+    private String name;
+    private int age;
+
+    public Film(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String name() {
+        return name;
+    }
+
+    public int ageRating() {
+        return age;
+    }
+}
+
+class Song {
+    private String name;
+    private int length;
+
+    public Song(String name, int length) {
+        this.name = name;
+        this.length = length;
+    }
+
+    private String name() {
+        return this.name;
+    }
+
+    private int length() {
+        return this.length;
+    }
+
+    public void printExercise() {
+        System.out.println("The song in " + this.name() + " has a length of " + this.length() + " seconds.");
+    }
+}
+
+
+class Debt {
+    private double balance;
+    private double interestRate;
+
+    public Debt(double balance, double interestRate) {
+        this.balance = balance;
+        this.interestRate = interestRate;
+    }
+
+    public void printBalance() {
+        System.out.println(this.balance);
+    }
+
+    public void waitOneYear() {
+        this.balance = balance * interestRate;
+    }
+
+    public static void testMortgage() {
+        Debt mortgage = new Debt(120000.0, 1.01);
+        mortgage.printBalance();
+
+        mortgage.waitOneYear();
+        mortgage.printBalance();
+
+        int years = 0;
+
+        while (years < 20) {
+            mortgage.waitOneYear();
+            years = years + 1;
+        }
+
+        mortgage.printBalance();
     }
 }
 
