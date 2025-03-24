@@ -1,10 +1,7 @@
-package org.example.JavaExercisesmooc;
-
-import com.sun.source.tree.WhileLoopTree;
+package org.example.JavaExercisesmooc.MoocParts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Part3 {

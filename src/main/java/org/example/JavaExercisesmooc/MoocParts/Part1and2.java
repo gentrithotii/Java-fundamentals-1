@@ -1,8 +1,8 @@
-package org.example.JavaExercisesmooc;
+package org.example.JavaExercisesmooc.MoocParts;
 
 import java.util.Scanner;
 
-public class Methods {
+public class Part1and2 {
 
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
