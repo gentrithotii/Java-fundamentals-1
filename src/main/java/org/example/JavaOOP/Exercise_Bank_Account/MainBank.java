@@ -1,8 +1,6 @@
-package org.example.JavaOOP;
+package org.example.JavaOOP.Exercise_Bank_Account;
 
-import org.example.JavaOOP.Exercise_Bank_Account.BankAccount;
-
-public class Main {
+public class MainBank {
     public static void main(String[] args) {
         BankAccount accountOne = new BankAccount("Gentrit Hoti", "Gentrit@test.com", "0761744881", 1000);
         BankAccount accountTwo = new BankAccount("Gentrit Hoti", "Gentrit@test.com", "0761744881", 6000);
@@ -15,6 +13,5 @@ public class Main {
         accountTwo.deposit(10000);
         System.out.println(accountTwo.getBalance());
         accountTwo.withdrawMoney(17800);
-
     }
 }
