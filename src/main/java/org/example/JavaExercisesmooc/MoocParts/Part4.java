@@ -1,18 +1,23 @@
 package org.example.JavaExercisesmooc.MoocParts;
 
-import java.time.LocalDateTime;
-
 public class Part4 {
     public static void main(String[] args) {
-        Account mathewsAccount = new Account("Mathews account", 16400);
-        Account myAccount = new Account("My account ", 2500);
+//        Account mathewsAccount = new Account("Mathews account", 16400);
+//        Account myAccount = new Account("My account ", 2500);
+//        System.out.println(myAccount.getBalance());
+//        transferMoney(mathewsAccount, myAccount, 400);
+//        myAccount.printAccountInfo();
 
-        System.out.println(myAccount.getBalance());
+//        Whistle duckWhistle = new Whistle("Kvaak");
+//        Whistle roosterWhistle = new Whistle("Peef");
+//        duckWhistle.sound();
+//        roosterWhistle.sound();
+//        duckWhistle.sound();
 
-        transferMoney(mathewsAccount, myAccount, 400);
-
-        myAccount.printAccountInfo();
-
+//        Product banana = new Product("Banana", 1.1, 13);
+//        banana.printProduct();
+//        DecreasingCounter counter = new DecreasingCounter(100);
+//        counter.printValue();
 
     }
 
@@ -21,6 +26,84 @@ public class Part4 {
         accountTwo.deposit(amountOfTransfer);
     }
 }
+
+class DecreasingCounter {
+    private int value;
+
+    public DecreasingCounter(int initialValue) {
+        this.value = initialValue;
+    }
+
+    public void printValue() {
+        System.out.println("value: " + this.value);
+    }
+
+    public void decrement() {
+        if (this.value != 0) {
+            this.value -= 1;
+        }
+    }
+
+    public void reset() {
+        this.value = 0;
+    }
+
+
+}
+
+class Product {
+    private double price;
+    private int quantity;
+    private String name;
+
+    public Product(String name, double price, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public void printProduct() {
+        System.out.println(this.name + ", Price: " + this.price + ", " + quantity + " pcs");
+    }
+}
+
+class Door {
+    public void knock() {
+        System.out.println("Who's there? ");
+    }
+}
+
+class Room {
+
+    private String code;
+    private int numberOfSeats;
+
+    public Room(String code, int numberOfSeats) {
+        this.code = code;
+        this.numberOfSeats = numberOfSeats;
+    }
+
+}
+
+class Whistle {
+    private String sound;
+
+    public Whistle(String whistleSound) {
+        this.sound = whistleSound;
+    }
+
+    public void sound() {
+        System.out.println(this.sound);
+    }
+}
+
+class Dog {
+
+    private String name;
+    private String breed;
+    private int age;
+}
+
 
 class Account {
     private String accountName;
@@ -60,9 +143,9 @@ class Account {
         if (amount < 0) {
             throw new IllegalArgumentException("Can't enter negative numbers");
         }
-        double initialBalance = getBalance();
-        initialBalance += amount;
-        setBalance(initialBalance);
+        double balance = getBalance();
+        balance += amount;
+        setBalance(balance);
     }
 
     public void printAccountInfo() {
