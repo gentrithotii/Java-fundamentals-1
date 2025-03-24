@@ -4,15 +4,21 @@ import java.time.LocalDateTime;
 
 public class Part4 {
     public static void main(String[] args) {
-        Account mathewsAccount = new Account("Mathews account", 1000);
-        Account myAccount = new Account("My account ", 0);
-        myAccount.deposit(100);
-        myAccount.withdraw(50);
+        Account mathewsAccount = new Account("Mathews account", 16400);
+        Account myAccount = new Account("My account ", 2500);
+
         System.out.println(myAccount.getBalance());
+
+        transferMoney(mathewsAccount, myAccount, 400);
+
         myAccount.printAccountInfo();
-        mathewsAccount.printAccountInfo();
 
 
+    }
+
+    public static void transferMoney(Account accountOne, Account accountTwo, double amountOfTransfer) {
+        accountOne.withdraw(amountOfTransfer);
+        accountTwo.deposit(amountOfTransfer);
     }
 }
 
@@ -45,16 +51,18 @@ class Account {
         if (amount > getBalance()) {
             throw new IllegalArgumentException("You don't have enough money");
         }
-        double balance = this.getBalance();
+        double balance = getBalance();
         balance -= amount;
-        this.setBalance(balance);
+        setBalance(balance);
     }
 
     public void deposit(double amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Can't enter negative numbers");
         }
-        this.setBalance(amount);
+        double initialBalance = getBalance();
+        initialBalance += amount;
+        setBalance(initialBalance);
     }
 
     public void printAccountInfo() {
