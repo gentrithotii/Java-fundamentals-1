@@ -56,7 +56,7 @@ public class TodoItem {
     }
 
     public boolean isOverdue() {
-        return true;
+        return getDeadLine().isBefore(LocalDate.now());
     }
 
     public String getSummary() {
