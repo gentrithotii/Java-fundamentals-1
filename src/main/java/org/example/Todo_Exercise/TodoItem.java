@@ -31,4 +31,35 @@ public class TodoItem {
         this.description = description;
     }
 
+    public LocalDate getDeadLine() {
+        return deadLine;
+    }
+
+    public void setDeadLine(LocalDate deadLine) {
+        this.deadLine = deadLine;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    public Person getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Person creator) {
+        this.creator = creator;
+    }
+
+    public boolean isOverdue() {
+        return true;
+    }
+
+    public String getSummary() {
+        return "Add summary text";
+    }
 }
