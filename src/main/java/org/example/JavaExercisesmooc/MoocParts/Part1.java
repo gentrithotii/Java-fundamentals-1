@@ -1,8 +1,8 @@
-package org.example.JavaExercisesmooc;
+package org.example.JavaExercisesmooc.MoocParts;
 
 import java.util.Scanner;
 
-public class Test1 {
+public class Part1 {
 
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
@@ -19,10 +19,9 @@ public class Test1 {
 
 
     private static void haveFunWithNumbers(Scanner sc) {
-        int even = 0, odd = 0;
+        int even = 0, odd = 0, numCounter = 0, sum = 0;
         double averageNum = 0;
-        int numCounter = 0;
-        int sum = 0;
+
         System.out.println("Give numbers:");
 
         while (true) {
