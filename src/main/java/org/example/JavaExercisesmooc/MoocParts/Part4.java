@@ -1,14 +1,8 @@
 package org.example.JavaExercisesmooc.MoocParts;
 
-import org.example.Todo_Exercise.Person;
-
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Part4 {
@@ -38,7 +32,10 @@ public class Part4 {
 //        multiplyClassTest();
 //        statisticClassTest(userInput);
 //        paymentCardTestFunction();
-        testItemsClass(userInput);
+//        testItemsClass(userInput);
+        PersonalInformationCollection collectionPersonalInformation = new PersonalInformationCollection();
+        collectionPersonalInformation.addPersonalInformation();
+        collectionPersonalInformation.printListOfPersonalInfo();
     }
 
     private static void paymentCardTestFunction() {
@@ -160,6 +157,80 @@ public class Part4 {
     }
 }
 
+class PersonalInformationCollection {
+    private ArrayList<PersonalInformation> personalInformationList;
+    private PersonalInformation personalInformation;
+    private final Scanner sc;
+
+    public PersonalInformationCollection() {
+        this.sc = new Scanner(System.in);
+        this.personalInformationList = new ArrayList<>();
+    }
+
+    public void addPersonalInformation() {
+        ArrayList<PersonalInformation> newList;
+        while (true) {
+            System.out.print("Enter First name: ");
+            String inputFirstName = sc.nextLine();
+
+            if (inputFirstName.isEmpty()) {
+                break;
+            }
+
+            System.out.print("Enter Last name: ");
+            String inputLastName = sc.nextLine();
+
+            System.out.print("Enter Identification number: ");
+            int userInputNumber = sc.nextInt();
+            sc.nextLine();
+
+            setPersonalInformation(new PersonalInformation(inputFirstName, inputLastName, userInputNumber));
+            getPersonalInformationList().add(this.personalInformation);
+            setPersonalInformationList(getPersonalInformationList());
+        }
+    }
+
+    public ArrayList<PersonalInformation> getPersonalInformationList() {
+        return this.personalInformationList;
+    }
+
+    public void setPersonalInformation(PersonalInformation personalInformation) {
+        this.personalInformation = personalInformation;
+    }
+
+    public void setPersonalInformationList(ArrayList<PersonalInformation> personalInformationList) {
+        this.personalInformationList = personalInformationList;
+    }
+
+    public PersonalInformation getPersonalInformation() {
+        return personalInformation;
+    }
+
+    public void printListOfPersonalInfo() {
+        for (PersonalInformation psi : getPersonalInformationList()) {
+            System.out.println(psi.toString());
+        }
+    }
+
+}
+
+
+class PersonalInformation {
+    private String firstName;
+    private String lastName;
+    private int identificationNumber;
+
+    public PersonalInformation(String firstName, String lastName, int identificationNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.identificationNumber = identificationNumber;
+    }
+
+    public String toString() {
+        return firstName + " " + lastName;
+    }
+}
+
 class Item {
     private String itemName;
     private LocalDateTime createdAt;
@@ -169,7 +240,7 @@ class Item {
         this.createdAt = LocalDateTime.now();
     }
 
-    public LocalDateTime formatDateTime(){
+    public LocalDateTime formatDateTime() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
         String text = this.createdAt.format(formatter);
