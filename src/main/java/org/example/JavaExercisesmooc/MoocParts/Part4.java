@@ -1,7 +1,10 @@
 package org.example.JavaExercisesmooc.MoocParts;
 
+import java.util.Scanner;
+
 public class Part4 {
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
 //        Account mathewsAccount = new Account("Mathews account", 16400);
 //        Account myAccount = new Account("My account ", 2500);
 //        System.out.println(myAccount.getBalance());
@@ -22,14 +25,73 @@ public class Part4 {
 //        Song garden = new Song("In The Garden", 10910);
 //        garden.printExercise();
 //        gaugeTest();
+//        agentTest();
+//        multiplyClassTest();
 
+        statisticClassTest(userInput);
+
+    }
+
+    private static void statisticClassTest(Scanner sc) {
+        Statistics statistics = new Statistics();
+        Statistics oddStatistics = new Statistics();
+        Statistics evenStatistics = new Statistics();
+
+        int odd = 0, even = 0;
+
+        while (true) {
+            System.out.print("Enter the numbers you want to add type -1 to end adding: ");
+            int userInput = sc.nextInt();
+
+            if (userInput == -1) {
+                break;
+            }
+            if (userInput % 2 == 0) {
+                evenStatistics.addNumber(userInput);
+                even++;
+            } else {
+                oddStatistics.addNumber(userInput);
+                odd++;
+            }
+
+            statistics.addNumber(userInput);
+
+        }
+
+        System.out.println("Count: " + statistics.getCount());
+        System.out.println("Sum: " + statistics.sum());
+        System.out.println("Average: " + statistics.average());
+        System.out.println("Sum of even numbers: " + evenStatistics.sum() + " Number of even numbers: " + even);
+        System.out.println("Sum of odd numbers: " + oddStatistics.sum() + " Number of odd numbers: " + odd);
+    }
+
+    private static void multiplyClassTest() {
+        Multiplier multiplyByThree = new Multiplier(3);
+
+        System.out.println("multiplyByThree.multiply(2): " + multiplyByThree.multiply(2));
+
+        Multiplier multiplyByFour = new Multiplier(4);
+
+        System.out.println("multiplyByFour.multiply(2): " + multiplyByFour.multiply(2));
+        System.out.println("multiplyByThree.multiply(1): " + multiplyByThree.multiply(1));
+        System.out.println("multiplyByFour.multiply(1): " + multiplyByFour.multiply(1));
+    }
+
+    private static void agentTest() {
+        Agent bond = new Agent("James", "Bond");
+
+        bond.toString(); // prints nothing
+        System.out.println(bond);
+
+        Agent ionic = new Agent("Ionic", "Bond");
+        System.out.println(ionic);
 
     }
 
     private static void gaugeTest() {
         Gauge g = new Gauge();
 
-        while(!g.full()) {
+        while (!g.full()) {
             System.out.println("Not full! Value: " + g.getValue());
             g.increase();
         }
@@ -42,6 +104,59 @@ public class Part4 {
     public static void transferMoney(Account accountOne, Account accountTwo, double amountOfTransfer) {
         accountOne.withdraw(amountOfTransfer);
         accountTwo.deposit(amountOfTransfer);
+    }
+}
+
+class Statistics {
+    private int count;
+    private int sum;
+
+    public Statistics() {
+        this.count = 0;
+        this.sum = 0;
+    }
+
+    public void addNumber(int number) {
+        this.sum += number;
+        this.count++;
+    }
+
+    public int getCount() {
+        return this.count;
+    }
+
+    public int sum() {
+        return this.sum;
+    }
+
+    public double average() {
+        return (double) this.sum / count;
+    }
+}
+
+class Multiplier {
+    private int number;
+
+    public Multiplier(int number) {
+        this.number = number;
+    }
+
+    public int multiply(int number) {
+        return this.number * number;
+    }
+}
+
+class Agent {
+    String firstName;
+    String lastName;
+
+    public Agent(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String toString() {
+        return "My name is " + lastName + ", " + firstName + " " + lastName;
     }
 }
 
