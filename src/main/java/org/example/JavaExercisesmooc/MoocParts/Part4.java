@@ -21,14 +21,53 @@ public class Part4 {
 //        Debt.testMortgage();
 //        Song garden = new Song("In The Garden", 10910);
 //        garden.printExercise();
+//        gaugeTest();
 
 
+    }
+
+    private static void gaugeTest() {
+        Gauge g = new Gauge();
+
+        while(!g.full()) {
+            System.out.println("Not full! Value: " + g.getValue());
+            g.increase();
+        }
+
+        System.out.println("Full! Value: " + g.getValue());
+        g.decrease();
+        System.out.println("Not full! Value: " + g.getValue());
     }
 
     public static void transferMoney(Account accountOne, Account accountTwo, double amountOfTransfer) {
         accountOne.withdraw(amountOfTransfer);
         accountTwo.deposit(amountOfTransfer);
     }
+}
+
+class Gauge {
+    private int value;
+
+    public Gauge() {
+        this.value = 0;
+    }
+
+    public void increase() {
+        this.value++;
+    }
+
+    public void decrease() {
+        this.value--;
+    }
+
+    public int getValue() {
+        return this.value;
+    }
+
+    public boolean full() {
+        return getValue() == 5;
+    }
+
 }
 
 class Film {
