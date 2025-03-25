@@ -33,9 +33,38 @@ public class Part4 {
 //        statisticClassTest(userInput);
 //        paymentCardTestFunction();
 //        testItemsClass(userInput);
-        PersonalInformationCollection collectionPersonalInformation = new PersonalInformationCollection();
-        collectionPersonalInformation.addPersonalInformation();
-        collectionPersonalInformation.printListOfPersonalInfo();
+//        PersonalInformationCollection collectionPersonalInformation = new PersonalInformationCollection();
+//        collectionPersonalInformation.addPersonalInformation();
+//        collectionPersonalInformation.printListOfPersonalInfo();
+        tryTelevisionProgram(userInput);
+    }
+
+    private static void tryTelevisionProgram(Scanner sc) {
+        ArrayList<TelevisionProgram> tvPrograms = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter movie name: ");
+            String userInput = sc.nextLine();
+
+            if (userInput.isEmpty()) {
+                break;
+            }
+
+            System.out.print("Enter movie duration: ");
+            int duration = sc.nextInt();
+            sc.nextLine();
+
+            tvPrograms.add(new TelevisionProgram(userInput, duration));
+        }
+
+        System.out.print("Enter the program's maximum duration leave empty if you to add more movies: ");
+        int maxDuration = sc.nextInt();
+
+        for (TelevisionProgram tvp : tvPrograms) {
+            if (tvp.maxDuration(maxDuration)) {
+                System.out.println(tvp.toString());
+            }
+        }
     }
 
     private static void paymentCardTestFunction() {
@@ -157,6 +186,40 @@ public class Part4 {
     }
 }
 
+class TelevisionProgram {
+    private String name;
+    private int duration;
+
+    public TelevisionProgram(String name, int duration) {
+        this.name = name;
+        this.duration = duration;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public boolean maxDuration(int userDuration) {
+        return getDuration() <= userDuration;
+    }
+
+    public String toString() {
+        return getName() + ", " + getDuration() + " minutes";
+    }
+}
+
 class PersonalInformationCollection {
     private ArrayList<PersonalInformation> personalInformationList;
     private PersonalInformation personalInformation;
@@ -211,7 +274,6 @@ class PersonalInformationCollection {
             System.out.println(psi.toString());
         }
     }
-
 }
 
 
