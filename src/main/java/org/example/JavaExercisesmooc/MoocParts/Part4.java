@@ -1,5 +1,14 @@
 package org.example.JavaExercisesmooc.MoocParts;
 
+import org.example.Todo_Exercise.Person;
+
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Part4 {
@@ -27,9 +36,53 @@ public class Part4 {
 //        gaugeTest();
 //        agentTest();
 //        multiplyClassTest();
+//        statisticClassTest(userInput);
+//        paymentCardTestFunction();
+        testItemsClass(userInput);
+    }
 
-        statisticClassTest(userInput);
+    private static void paymentCardTestFunction() {
+        PaymentCard paulsCard = new PaymentCard(20);
+        PaymentCard mattsCard = new PaymentCard(30);
 
+        paulsCard.eatHeartily();
+        mattsCard.eatAffordably();
+        System.out.println(paulsCard.toString());
+        System.out.println(mattsCard.toString());
+
+        paulsCard.addMoney(20);
+        mattsCard.eatHeartily();
+
+        System.out.println(paulsCard.toString());
+        System.out.println(mattsCard.toString());
+
+        paulsCard.eatAffordably();
+        paulsCard.eatAffordably();
+        mattsCard.addMoney(50);
+
+        System.out.println(paulsCard.toString());
+        System.out.println(mattsCard.toString());
+
+    }
+
+    private static void testItemsClass(Scanner sc) {
+        ArrayList<Item> itemList = new ArrayList<>();
+        while (true) {
+            System.out.print("Enter the name you want to add to the list: ");
+            String userInput = sc.nextLine();
+
+            if (userInput.isEmpty()) {
+                break;
+            }
+            Item newItem = new Item(userInput);
+
+            itemList.add(newItem);
+
+        }
+
+        for (int i = 0; i < itemList.size(); i++) {
+            System.out.println(itemList.get(i));
+        }
     }
 
     private static void statisticClassTest(Scanner sc) {
@@ -104,6 +157,69 @@ public class Part4 {
     public static void transferMoney(Account accountOne, Account accountTwo, double amountOfTransfer) {
         accountOne.withdraw(amountOfTransfer);
         accountTwo.deposit(amountOfTransfer);
+    }
+}
+
+class Item {
+    private String itemName;
+    private LocalDateTime createdAt;
+
+    public Item(String itemName) {
+        this.itemName = itemName;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public LocalDateTime formatDateTime(){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd HH mm ss");
+        String text = this.createdAt.format(formatter);
+
+        return LocalDateTime.parse(text, formatter);
+    }
+
+    public String toString() {
+        return this.itemName + " (created at:" + formatDateTime() + " )";
+    }
+}
+
+class PaymentCard {
+    private double balance;
+
+    public PaymentCard(double balance) {
+        this.balance = balance;
+    }
+
+    public void eatAffordably() {
+        double eatAffordably = 2.60;
+        if (this.balance >= eatAffordably) {
+            this.balance -= eatAffordably;
+        } else {
+            System.out.println("Your broke sadge");
+        }
+    }
+
+    public void eatHeartily() {
+        double eatHeartily = 4.60;
+        if (this.balance >= eatHeartily) {
+            this.balance -= eatHeartily;
+        } else {
+
+            System.out.println("Your broke sadge");
+        }
+    }
+
+    public double addMoney(double amount) {
+        double maxAmount = this.balance + amount;
+        if (maxAmount >= 150) {
+            return this.balance = 150;
+        } else if (amount < 0) {
+            return this.balance;
+        }
+        return this.balance += amount;
+    }
+
+    public String toString() {
+        return "The card has a balance of " + this.balance + " euros";
     }
 }
 
