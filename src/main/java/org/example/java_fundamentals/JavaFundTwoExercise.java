@@ -1,4 +1,4 @@
-package org.example.javafundamentals;
+package org.example.java_fundamentals;
 
 public class JavaFundTwoExercise {
     public static void main(String[] args) {

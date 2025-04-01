@@ -1,4 +1,4 @@
-package org.example.javafundamentals;
+package org.example.java_fundamentals;
 
 import java.util.Random;
 import java.util.Scanner;

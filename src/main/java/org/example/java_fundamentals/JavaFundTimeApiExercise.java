@@ -1,4 +1,4 @@
-package org.example.javafundamentals;
+package org.example.java_fundamentals;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
