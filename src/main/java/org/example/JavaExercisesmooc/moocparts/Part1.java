@@ -1,4 +1,4 @@
-package org.example.JavaExercisesmooc.MoocParts;
+package org.example.JavaExercisesmooc.moocparts;
 
 import java.util.Scanner;
 

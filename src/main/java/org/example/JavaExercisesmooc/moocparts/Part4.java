@@ -1,4 +1,4 @@
-package org.example.JavaExercisesmooc.MoocParts;
+package org.example.JavaExercisesmooc.moocparts;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

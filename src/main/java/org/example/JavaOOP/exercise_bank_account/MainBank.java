@@ -1,4 +1,4 @@
-package org.example.JavaOOP.Exercise_Bank_Account;
+package org.example.JavaOOP.exercise_bank_account;
 
 public class MainBank {
     public static void main(String[] args) {

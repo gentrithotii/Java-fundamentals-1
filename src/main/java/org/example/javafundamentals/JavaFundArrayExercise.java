@@ -1,4 +1,4 @@
-package org.example.JavaFundamentals;
+package org.example.javafundamentals;
 
 import java.util.Arrays;
 import java.util.Scanner;

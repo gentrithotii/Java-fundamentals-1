@@ -1,11 +1,10 @@
-package org.example.JavaFundamentals;
+package org.example.javafundamentals;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 public class JavaFundTimeApiExercise {
     public static void main(String[] args) {
