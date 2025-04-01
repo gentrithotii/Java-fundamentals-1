@@ -12,7 +12,7 @@ public enum Dice {
     private final int maxValue;
 
 
-    private Dice(int maxValue) {
+    Dice(int maxValue) {
         this.maxValue = maxValue;
     }
 
