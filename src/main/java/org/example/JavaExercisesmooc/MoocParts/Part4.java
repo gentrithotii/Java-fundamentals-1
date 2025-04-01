@@ -186,6 +186,68 @@ public class Part4 {
     }
 }
 
+class BookManager {
+    private final Book book = new Book();
+    private ArrayList<Book> bookArrayList;
+
+    public BookManager() {
+
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public ArrayList<Book> getBookArrayList() {
+        return bookArrayList;
+    }
+
+    public void setBookArrayList(ArrayList<Book> bookArrayList) {
+        this.bookArrayList = bookArrayList;
+    }
+}
+
+class Book {
+    private String title;
+    private int pages;
+    private int publicationYear;
+
+    public Book() {
+
+    }
+
+    public Book(String title, int pages, int publicationYear) {
+        this.title = title;
+        this.pages = pages;
+        this.publicationYear = publicationYear;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
+
+    public void setPublicationYear(int publicationYear) {
+        this.publicationYear = publicationYear;
+    }
+}
+
+
 class TelevisionProgram {
     private String name;
     private int duration;
@@ -196,7 +258,7 @@ class TelevisionProgram {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -204,7 +266,7 @@ class TelevisionProgram {
     }
 
     public int getDuration() {
-        return this.duration;
+        return duration;
     }
 
     public void setDuration(int duration) {
