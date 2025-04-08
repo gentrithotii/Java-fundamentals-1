@@ -1,20 +1,56 @@
 package org.example.collectionexercises;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class CollectionExercises {
     public static void main(String[] args) {
 
 //        firstExercise();
-//        seconExecise();
+//        secondExercise();
 //        thirdExercise();
 //        fourthExercise();
 //        fifthExercise();
 //        sixthExercise();
 //        seventhExercise();
 //        eightExercise();
+//        ninthExercise();
+//        tenthExercise();
+//        eleventhExercise();
+        twelveExercise();
+    }
 
+    public static void twelveExercise() {
+        Map<Integer, CarExerciseTwelve> carExerciseTwelveMap = new HashMap<>();
+        carExerciseTwelveMap.put(1, new CarExerciseTwelve("BMW", "M5"));
+        carExerciseTwelveMap.put(2, new CarExerciseTwelve("Porsche", "GT2RS"));
+        carExerciseTwelveMap.put(3, new CarExerciseTwelve("Audi", "RS6"));
+        carExerciseTwelveMap.put(4, new CarExerciseTwelve("Toyota", "Supra"));
+        carExerciseTwelveMap.put(5, new CarExerciseTwelve("Nissan", "GTR"));
+
+        for (int i = 1; i < carExerciseTwelveMap.size() + 1; i++) {
+            System.out.println(carExerciseTwelveMap.get(i).getBrand());
+        }
+    }
+
+    public static void eleventhExercise() {
+        Map<Integer, String> carHashMap = getCarHashMap();
+
+        for (Integer things : carHashMap.keySet()) {
+            System.out.println(carHashMap.get(things));
+        }
+    }
+
+    public static void tenthExercise() {
+        Map<Integer, String> carHashMap = getCarHashMap();
+        for (Integer i : carHashMap.keySet()) {
+            System.out.println(i);
+        }
+    }
+
+    public static void ninthExercise() {
+        Map<Integer, String> carHashMap = getCarHashMap();
+
+        System.out.println(carHashMap);
     }
 
     public static void eightExercise() {
@@ -102,7 +138,7 @@ public class CollectionExercises {
         }
     }
 
-    public static void seconExecise() {
+    public static void secondExercise() {
         List<String> daysOfWeek = new ArrayList<>(getDayOfWeek());
 
         for (String s : daysOfWeek) {
@@ -147,6 +183,17 @@ public class CollectionExercises {
         hashDaysOfWeek.add("Saturday");
         hashDaysOfWeek.add("Sunday");
         return hashDaysOfWeek;
+    }
+
+    public static Map<Integer, String> getCarHashMap() {
+        Map<Integer, String> carHashMap = new HashMap<>();
+        carHashMap.put(1, "BMW");
+        carHashMap.put(2, "Porsche");
+        carHashMap.put(3, "Audi");
+        carHashMap.put(4, "Mercedes");
+        carHashMap.put(5, "Toyota");
+
+        return carHashMap;
     }
 
     public static void sortList(List<String> list) {
