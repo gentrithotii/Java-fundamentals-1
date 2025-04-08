@@ -13,11 +13,18 @@ public class CollectionExercises {
 //        fifthExercise();
 //        sixthExercise();
 //        seventhExercise();
+//        eightExercise();
 
     }
 
     public static void eightExercise() {
+        Set<String> randomNames = getRandomNames();
 
+        Set<String> treSeet = new TreeSet<>(randomNames);
+
+        for (String names : treSeet) {
+            System.out.println(names);
+        }
     }
 
     public static void seventhExercise() {
