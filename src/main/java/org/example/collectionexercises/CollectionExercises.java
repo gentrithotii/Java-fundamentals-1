@@ -147,7 +147,6 @@ public class CollectionExercises {
         List<String> arrayListNames = new ArrayList<>(namesHashSet);
         sortList(arrayListNames);
 
-        sortList(arrayListNames);
         System.out.println(" ");
         System.out.println(" ");
         for (String name : arrayListNames) {
