@@ -10,7 +10,8 @@ public class CollectionExercises {
 //        seconExecise();
 //        thirdExercise();
 //        fourthExercise();
-        fifthExercise();
+//        fifthExercise();
+        sixthExercise();
     }
 
     public static void firstExercise() {
@@ -84,7 +85,7 @@ public class CollectionExercises {
     }
 
     public static void fifthExercise() {
-        HashSet<String> hashDaysOfWeek = new HashSet<>();
+        Set<String> hashDaysOfWeek = new HashSet<>();
         hashDaysOfWeek.add("Monday");
         hashDaysOfWeek.add("Tuesday");
         hashDaysOfWeek.add("Wednesday");
@@ -95,6 +96,30 @@ public class CollectionExercises {
 
         for (String hashWeekDay : hashDaysOfWeek) {
             System.out.println(hashWeekDay);
+        }
+    }
+
+    public static void sixthExercise() {
+        Set<String> hashDaysOfWeek = new HashSet<>();
+        hashDaysOfWeek.add("Monday");
+        hashDaysOfWeek.add("Tuesday");
+        hashDaysOfWeek.add("Wednesday");
+        hashDaysOfWeek.add("Thursday");
+        hashDaysOfWeek.add("Friday");
+        hashDaysOfWeek.add("Saturday");
+        hashDaysOfWeek.add("Sunday");
+
+        for (String hashWeekDay : hashDaysOfWeek) {
+            System.out.println(hashWeekDay);
+        }
+        System.out.println(" ");
+//        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
+
+        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
+        convertedFromHash.addAll(hashDaysOfWeek);
+
+        for (String items : convertedFromHash) {
+            System.out.println(items);
         }
     }
 }
