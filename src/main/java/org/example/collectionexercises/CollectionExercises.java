@@ -1,10 +1,7 @@
 package org.example.collectionexercises;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionExercises {
     public static void main(String[] args) {
@@ -12,8 +9,8 @@ public class CollectionExercises {
 //        firstExercise();
 //        seconExecise();
 //        thirdExercise();
-        fourthExercise();
-
+//        fourthExercise();
+        fifthExercise();
     }
 
     public static void firstExercise() {
@@ -83,6 +80,21 @@ public class CollectionExercises {
 
         for (String weekDays : subList) {
             System.out.println(weekDays);
+        }
+    }
+
+    public static void fifthExercise() {
+        HashSet<String> hashDaysOfWeek = new HashSet<>();
+        hashDaysOfWeek.add("Monday");
+        hashDaysOfWeek.add("Tuesday");
+        hashDaysOfWeek.add("Wednesday");
+        hashDaysOfWeek.add("Thursday");
+        hashDaysOfWeek.add("Friday");
+        hashDaysOfWeek.add("Saturday");
+        hashDaysOfWeek.add("Sunday");
+
+        for (String hashWeekDay : hashDaysOfWeek) {
+            System.out.println(hashWeekDay);
         }
     }
 }
