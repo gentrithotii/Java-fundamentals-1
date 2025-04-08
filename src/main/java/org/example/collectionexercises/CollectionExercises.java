@@ -11,7 +11,8 @@ public class CollectionExercises {
 //        thirdExercise();
 //        fourthExercise();
 //        fifthExercise();
-        sixthExercise();
+//        sixthExercise();
+        seventhExercise();
     }
 
     public static void firstExercise() {
@@ -122,4 +123,55 @@ public class CollectionExercises {
             System.out.println(items);
         }
     }
+
+    public static void seventhExercise() {
+        Set<String> namesHashSet = new HashSet<>();
+        namesHashSet.add("Gentrit");
+        namesHashSet.add("Angel");
+        namesHashSet.add("Integra");
+        namesHashSet.add("Qupakabra");
+        namesHashSet.add("Aurela");
+        namesHashSet.add("Benedict");
+        namesHashSet.add("Elaine");
+        namesHashSet.add("Isak");
+        namesHashSet.add("Kalludra");
+        namesHashSet.add("Zanzi");
+        namesHashSet.add("Xavier");
+        namesHashSet.add("Luan");
+        namesHashSet.add("Test");
+
+        for (String name : namesHashSet) {
+            System.out.println(name);
+        }
+
+        List<String> arrayListNames = new ArrayList<>(namesHashSet);
+        sortList(arrayListNames);
+
+        sortList(arrayListNames);
+        System.out.println(" ");
+        System.out.println(" ");
+        for (String name : arrayListNames) {
+            System.out.println(name);
+        }
+    }
+
+
+    public static void sortList(List<String> list) {
+        boolean swapped = true;
+
+        while (swapped) {
+            swapped = false;
+
+            for (int i = 0; i < list.size() - 1; i++) {
+                if (list.get(i).charAt(0) > list.get(i + 1).charAt(0)) {
+                    String temp = list.get(i);
+                    list.set(i, list.get(i + 1));
+                    list.set(i + 1, temp);
+                    swapped = true;
+                }
+            }
+        }
+    }
+
+
 }
