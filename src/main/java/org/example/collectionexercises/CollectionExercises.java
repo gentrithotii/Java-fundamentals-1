@@ -12,36 +12,71 @@ public class CollectionExercises {
 //        fourthExercise();
 //        fifthExercise();
 //        sixthExercise();
-        seventhExercise();
+//        seventhExercise();
+
     }
 
-    public static void firstExercise() {
-        List<String> daysOfWeek = new ArrayList<>();
-        daysOfWeek.add("Monday");
-        daysOfWeek.add("Tuesday");
-        daysOfWeek.add("Wednesday");
-        daysOfWeek.add("Thursday");
-        daysOfWeek.add("Friday");
-        daysOfWeek.add("Saturday");
-        daysOfWeek.add("Sunday");
+    public static void eightExercise() {
 
-        for (String s : daysOfWeek) {
-            System.out.println(s);
+    }
+
+    public static void seventhExercise() {
+        Set<String> namesHashSet = getRandomNames();
+
+        for (String name : namesHashSet) {
+            System.out.println(name);
+        }
+
+        List<String> arrayListNames = new ArrayList<>(namesHashSet);
+        sortList(arrayListNames);
+
+        System.out.println(" ");
+        System.out.println(" ");
+        for (String name : arrayListNames) {
+            System.out.println(name);
         }
     }
 
-    public static void seconExecise() {
-        List<String> daysOfWeek = new ArrayList<>();
-        daysOfWeek.add("Monday");
-        daysOfWeek.add("Tuesday");
-        daysOfWeek.add("Wednesday");
-        daysOfWeek.add("Thursday");
-        daysOfWeek.add("Friday");
-        daysOfWeek.add("Saturday");
-        daysOfWeek.add("Sunday");
+    public static void sixthExercise() {
+        Set<String> hashDaysOfWeek = getDayOfWeek();
 
-        for (int i = 0; i < daysOfWeek.size(); i++) {
-            System.out.println(daysOfWeek.get(i));
+        for (String hashWeekDay : hashDaysOfWeek) {
+            System.out.println(hashWeekDay);
+        }
+        System.out.println(" ");
+//        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
+
+        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
+        convertedFromHash.addAll(hashDaysOfWeek);
+
+        for (String items : convertedFromHash) {
+            System.out.println(items);
+        }
+    }
+
+    public static void fifthExercise() {
+        Set<String> hashDaysOfWeek = getDayOfWeek();
+
+        for (String hashWeekDay : hashDaysOfWeek) {
+            System.out.println(hashWeekDay);
+        }
+    }
+
+    public static void fourthExercise() {
+        List<String> daysOfWeek = new ArrayList<>(getDayOfWeek());
+
+        System.out.println("Normal List");
+        System.out.println(" ");
+        for (String weekDays : daysOfWeek) {
+            System.out.println(weekDays);
+        }
+        System.out.println("--------------------");
+        System.out.println("Sublist");
+        System.out.println(" ");
+        List<String> subList = daysOfWeek.subList(0, 3);
+
+        for (String weekDays : subList) {
+            System.out.println(weekDays);
         }
     }
 
@@ -60,71 +95,24 @@ public class CollectionExercises {
         }
     }
 
-    public static void fourthExercise() {
-        List<String> daysOfWeek = new ArrayList<>();
-        daysOfWeek.add("Monday");
-        daysOfWeek.add("Tuesday");
-        daysOfWeek.add("Wednesday");
-        daysOfWeek.add("Thursday");
-        daysOfWeek.add("Friday");
-        daysOfWeek.add("Saturday");
-        daysOfWeek.add("Sunday");
+    public static void seconExecise() {
+        List<String> daysOfWeek = new ArrayList<>(getDayOfWeek());
 
-        System.out.println("Normal List");
-        System.out.println(" ");
-        for (String weekDays : daysOfWeek) {
-            System.out.println(weekDays);
-        }
-        System.out.println("--------------------");
-        System.out.println("Sublist");
-        System.out.println(" ");
-        List<String> subList = daysOfWeek.subList(0, 3);
-
-        for (String weekDays : subList) {
-            System.out.println(weekDays);
+        for (String s : daysOfWeek) {
+            System.out.println(s);
         }
     }
 
-    public static void fifthExercise() {
-        Set<String> hashDaysOfWeek = new HashSet<>();
-        hashDaysOfWeek.add("Monday");
-        hashDaysOfWeek.add("Tuesday");
-        hashDaysOfWeek.add("Wednesday");
-        hashDaysOfWeek.add("Thursday");
-        hashDaysOfWeek.add("Friday");
-        hashDaysOfWeek.add("Saturday");
-        hashDaysOfWeek.add("Sunday");
 
-        for (String hashWeekDay : hashDaysOfWeek) {
-            System.out.println(hashWeekDay);
+    public static void firstExercise() {
+        List<String> daysOfWeek = new ArrayList<>(getDayOfWeek());
+
+        for (String s : daysOfWeek) {
+            System.out.println(s);
         }
     }
 
-    public static void sixthExercise() {
-        Set<String> hashDaysOfWeek = new HashSet<>();
-        hashDaysOfWeek.add("Monday");
-        hashDaysOfWeek.add("Tuesday");
-        hashDaysOfWeek.add("Wednesday");
-        hashDaysOfWeek.add("Thursday");
-        hashDaysOfWeek.add("Friday");
-        hashDaysOfWeek.add("Saturday");
-        hashDaysOfWeek.add("Sunday");
-
-        for (String hashWeekDay : hashDaysOfWeek) {
-            System.out.println(hashWeekDay);
-        }
-        System.out.println(" ");
-//        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
-
-        List<String> convertedFromHash = new ArrayList<>(hashDaysOfWeek);
-        convertedFromHash.addAll(hashDaysOfWeek);
-
-        for (String items : convertedFromHash) {
-            System.out.println(items);
-        }
-    }
-
-    public static void seventhExercise() {
+    private static Set<String> getRandomNames() {
         Set<String> namesHashSet = new HashSet<>();
         namesHashSet.add("Gentrit");
         namesHashSet.add("Angel");
@@ -139,21 +127,20 @@ public class CollectionExercises {
         namesHashSet.add("Xavier");
         namesHashSet.add("Luan");
         namesHashSet.add("Test");
-
-        for (String name : namesHashSet) {
-            System.out.println(name);
-        }
-
-        List<String> arrayListNames = new ArrayList<>(namesHashSet);
-        sortList(arrayListNames);
-
-        System.out.println(" ");
-        System.out.println(" ");
-        for (String name : arrayListNames) {
-            System.out.println(name);
-        }
+        return namesHashSet;
     }
 
+    private static Set<String> getDayOfWeek() {
+        Set<String> hashDaysOfWeek = new HashSet<>();
+        hashDaysOfWeek.add("Monday");
+        hashDaysOfWeek.add("Tuesday");
+        hashDaysOfWeek.add("Wednesday");
+        hashDaysOfWeek.add("Thursday");
+        hashDaysOfWeek.add("Friday");
+        hashDaysOfWeek.add("Saturday");
+        hashDaysOfWeek.add("Sunday");
+        return hashDaysOfWeek;
+    }
 
     public static void sortList(List<String> list) {
         boolean swapped = true;
@@ -171,6 +158,5 @@ public class CollectionExercises {
             }
         }
     }
-
 
 }
