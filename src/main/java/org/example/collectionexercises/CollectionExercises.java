@@ -9,7 +9,8 @@ public class CollectionExercises {
     public static void main(String[] args) {
 
 //        firstExercise();
-        seconExecise();
+//        seconExecise();
+        thirdExercise();
 
     }
 
@@ -40,6 +41,21 @@ public class CollectionExercises {
 
         for (int i = 0; i < daysOfWeek.size(); i++) {
             System.out.println(daysOfWeek.get(i));
+        }
+    }
+
+    public static void thirdExercise() {
+        List<String> daysOfWeek = new ArrayList<>();
+        daysOfWeek.add("Monday");
+        daysOfWeek.add("Tuesday");
+        daysOfWeek.add("Wednesday");
+        daysOfWeek.add("Friday");
+        daysOfWeek.add("Saturday");
+        daysOfWeek.add("Sunday");
+        daysOfWeek.add("Thursday");
+
+        for (String weekDays : daysOfWeek) {
+            System.out.println(weekDays);
         }
     }
 }
