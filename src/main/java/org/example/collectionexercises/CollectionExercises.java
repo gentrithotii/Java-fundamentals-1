@@ -1,5 +1,7 @@
 package org.example.collectionexercises;
 
+import com.sun.source.doctree.InlineTagTree;
+
 import java.util.*;
 
 public class CollectionExercises {
@@ -27,8 +29,8 @@ public class CollectionExercises {
         carExerciseTwelveMap.put(4, new CarExerciseTwelve("Toyota", "Supra"));
         carExerciseTwelveMap.put(5, new CarExerciseTwelve("Nissan", "GTR"));
 
-        for (int i = 1; i < carExerciseTwelveMap.size() + 1; i++) {
-            System.out.println(carExerciseTwelveMap.get(i).getBrand());
+        for (Integer i : carExerciseTwelveMap.keySet()) {
+            System.out.println("Car brands: " + carExerciseTwelveMap.get(i).getModel());
         }
     }
 

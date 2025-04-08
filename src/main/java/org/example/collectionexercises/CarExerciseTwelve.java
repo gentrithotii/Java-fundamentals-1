@@ -35,4 +35,13 @@ public class CarExerciseTwelve {
     public void setModel(String model) {
         this.model = model;
     }
+
+    @Override
+    public String toString() {
+        return "CarExerciseTwelve{" +
+                "id=" + getId() +
+                ", brand='" + getBrand() + '\'' +
+                ", model='" + getModel() + '\'' +
+                '}';
+    }
 }
