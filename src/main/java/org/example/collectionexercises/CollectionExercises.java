@@ -19,7 +19,22 @@ public class CollectionExercises {
 //        tenthExercise();
 //        eleventhExercise();
 //        twelveExercise();
-        challengeExerciseOne();
+//        challengeExerciseOne();
+        challengeExerciseTwo();
+
+    }
+
+    public static void challengeExerciseTwo() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("gentrit@test.com", "Gentrit");
+        hashMap.put("hoti@test.com", "Hoti");
+        hashMap.put("test@test.com", "test");
+
+        Set<String> hashSet = new HashSet<>(hashMap.keySet());
+
+        for (String item : hashSet) {
+            System.out.println(item);
+        }
 
     }
 
