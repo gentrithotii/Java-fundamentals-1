@@ -18,7 +18,19 @@ public class CollectionExercises {
 //        ninthExercise();
 //        tenthExercise();
 //        eleventhExercise();
-        twelveExercise();
+//        twelveExercise();
+        challengeExerciseOne();
+
+    }
+
+    public static void challengeExerciseOne() {
+        Set<String> dayOfWeek = getDayOfWeek();
+        Set<String> weekDays = new HashSet<>();
+        weekDays.add("Saturday");
+        weekDays.add("Sunday");
+
+        dayOfWeek.retainAll(weekDays);
+
     }
 
     public static void twelveExercise() {
