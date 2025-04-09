@@ -20,7 +20,20 @@ public class CollectionExercises {
 //        eleventhExercise();
 //        twelveExercise();
 //        challengeExerciseOne();
-        challengeExerciseTwo();
+//        challengeExerciseTwo();
+    challengeExerciseThree();
+    }
+
+    public static void challengeExerciseThree() {
+        List<SuperHero> superHeroes = new ArrayList<>();
+        superHeroes.add(new SuperHero(1, "Batman", 30));
+        superHeroes.add(new SuperHero(2, "Superman", 36));
+        superHeroes.add(new SuperHero(3, "Hulk", 21));
+        superHeroes.add(new SuperHero(4, "Spider Man", 18));
+
+        Collections.sort(superHeroes);
+
+        System.out.println(superHeroes);
 
     }
 
