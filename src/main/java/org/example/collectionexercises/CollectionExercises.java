@@ -31,6 +31,8 @@ public class CollectionExercises {
 
         dayOfWeek.retainAll(weekDays);
 
+        System.out.println(dayOfWeek);
+
     }
 
     public static void twelveExercise() {
