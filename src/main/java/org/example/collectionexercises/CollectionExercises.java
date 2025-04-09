@@ -21,7 +21,21 @@ public class CollectionExercises {
 //        twelveExercise();
 //        challengeExerciseOne();
 //        challengeExerciseTwo();
-    challengeExerciseThree();
+//        challengeExerciseThree();
+        challengeExerciseFour();
+    }
+
+    public static void challengeExerciseFour() {
+        int[] numbers = new int[]{1, 4, 4, 2, 6, 7};
+        Set<Integer> hashSetNumbers = new HashSet<>();
+
+        for (int num : numbers) {
+            hashSetNumbers.add(num);
+        }
+
+        for (Integer num : hashSetNumbers) {
+            System.out.println(num);
+        }
     }
 
     public static void challengeExerciseThree() {
