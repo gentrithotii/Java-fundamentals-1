@@ -6,9 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -21,13 +19,51 @@ public class ExceptionExercises {
 //        taskThree();
 //        List<Integer> numberTest = taskFour();
 //        numberTest.forEach(System.out::println);
-        taskSix(userInput);
+//            taskSix(userInput);
+        taskSeven(userInput);
+
+    }
+
+    static void addNameToList(List<String> namesList, Scanner sc) {
+        System.out.println("Enter the name you want to add: ");
+        String nameToAdd = sc.nextLine();
+        if (namesList.contains(nameToAdd)) {
+            throw new DuplicateNameException("Cannot add duplicate name to list ", nameToAdd);
+        }
+        namesList.add(nameToAdd);
+        System.out.println("Name has been added.");
+    }
+
+    static void findName(List<String> namesList, Scanner sc) {
+        System.out.println("Enter the name you want to to find: ");
+        String nameToSearch = sc.nextLine();
+        if (!namesList.contains(nameToSearch)) {
+            throw new NameNotFoundException(nameToSearch + " does not exists");
+        }
+        System.out.println("Name Exists");
+    }
+
+    static void taskSeven(Scanner sc) {
+        List<String> names = new ArrayList<>(Arrays.asList("Gentrit", "Anna", "Kevini", "Malik", "Asja", " Lala", "Testi", "Jakobi", "Tinkivinki", "Bober"));
+
+        System.out.println("1. Add Name to list");
+        System.out.println("2. Find name in the list");
+        int userChoice = Integer.parseInt(sc.nextLine());
+        switch (userChoice) {
+            case 1:
+                addNameToList(names, sc);
+                break;
+            case 2:
+                findName(names, sc);
+                break;
+            default:
+                System.out.println("Wrong Input");
+        }
 
     }
 
     static void taskSix(Scanner sc) {
-        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
-                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         System.out.print("Enter a valid email address: ");
         String userEmail = sc.nextLine();
 
