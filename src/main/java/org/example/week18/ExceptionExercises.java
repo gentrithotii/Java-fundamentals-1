@@ -105,6 +105,9 @@ public class ExceptionExercises {
         } catch (ArithmeticException e) {
             System.out.println("Can't divide " + e.getMessage());
         }
+        finally {
+            System.out.println("Finally has ran");
+        }
     }
 }
 
