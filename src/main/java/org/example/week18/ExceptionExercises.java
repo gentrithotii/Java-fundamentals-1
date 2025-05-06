@@ -9,20 +9,33 @@ import java.nio.file.Paths;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class ExceptionExercises {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
-//        taskOne(userInput);
+//        taskOneAndFive(userInput);
 //        taskTwo(userInput);
 //        taskThree();
+//        List<Integer> numberTest = taskFour();
+//        numberTest.forEach(System.out::println);
+        taskSix(userInput);
 
+    }
 
-        List<Integer> numberTest = taskFour();
+    static void taskSix(Scanner sc) {
+        String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        System.out.print("Enter a valid email address: ");
+        String userEmail = sc.nextLine();
 
-        numberTest.forEach(System.out::println);
+        if (Pattern.matches(regexPattern, userEmail)) {
+            System.out.println("You have entered a valid email address");
+        } else {
+            throw new IllegalArgumentException("Invalid Email Address");
+        }
 
     }
 
@@ -31,16 +44,13 @@ public class ExceptionExercises {
         Path filePath = Paths.get("filesforexercises/numbers-3.csv");
 
         try (BufferedReader reader = Files.newBufferedReader(filePath)) {
-            numbers = reader.lines()
-                    .flatMap(line -> Stream.of(line.split(",")))
-                    .map(s -> {
-                        try {
-                            return Integer.parseInt(s.trim());
-                        } catch (NumberFormatException e) {
-                            throw new RuntimeException("Could not format String to Number: " + s);
-                        }
-                    })
-                    .toList();
+            numbers = reader.lines().flatMap(line -> Stream.of(line.split(","))).map(s -> {
+                try {
+                    return Integer.parseInt(s.trim());
+                } catch (NumberFormatException e) {
+                    throw new RuntimeException("Could not format String to Number: " + s);
+                }
+            }).toList();
         } catch (NoSuchFileException e) {
             throw new RuntimeException("File not found at path: " + filePath, e);
         } catch (IOException e) {
@@ -87,7 +97,7 @@ public class ExceptionExercises {
 
     }
 
-    static void taskOne(Scanner sc) {
+    static void taskOneAndFive(Scanner sc) {
         System.out.print("Enter the number you want to divide: ");
         int firstNum = Integer.parseInt(sc.nextLine());
         System.out.println(" ");
