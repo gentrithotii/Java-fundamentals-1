@@ -1,19 +1,14 @@
 package org.example.week18;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ExceptionExercises {
@@ -104,8 +99,7 @@ public class ExceptionExercises {
             System.out.println("The result is : " + result);
         } catch (ArithmeticException e) {
             System.out.println("Can't divide " + e.getMessage());
-        }
-        finally {
+        } finally {
             System.out.println("Finally has ran");
         }
     }
