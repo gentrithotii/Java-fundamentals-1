@@ -1,7 +1,20 @@
 package org.example.week18;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ExceptionExercises {
     public static void main(String[] args) {
@@ -9,8 +22,37 @@ public class ExceptionExercises {
 
 //        taskOne(userInput);
 //        taskTwo(userInput);
-        taskThree();
+//        taskThree();
 
+
+        List<Integer> numberTest = taskFour();
+
+        numberTest.forEach(System.out::println);
+
+    }
+
+    static List<Integer> taskFour() {
+        List<Integer> numbers = null;
+        Path filePath = Paths.get("filesforexercises/numbers-3.csv");
+
+        try (BufferedReader reader = Files.newBufferedReader(filePath)) {
+            numbers = reader.lines()
+                    .flatMap(line -> Stream.of(line.split(",")))
+                    .map(s -> {
+                        try {
+                            return Integer.parseInt(s.trim());
+                        } catch (NumberFormatException e) {
+                            throw new RuntimeException("Could not format String to Number: " + s);
+                        }
+                    })
+                    .toList();
+        } catch (NoSuchFileException e) {
+            throw new RuntimeException("File not found at path: " + filePath, e);
+        } catch (IOException e) {
+            System.out.println("Error reading the file!");
+        }
+
+        return numbers;
     }
 
     static void taskThree() {
@@ -87,7 +129,7 @@ class BankAccount {
     public void withdraw(double amount) throws InsufficientBalanceException {
         if (getBalance() < amount) {
             double needed = amount - getBalance();
-            throw new InsufficientBalanceException("You need " + needed + " to do " + amount + " withdraw");
+            throw new InsufficientBalanceException("You need " + needed + " more to withdraw" + amount);
         } else {
             setBalance(getBalance() - amount);
         }
