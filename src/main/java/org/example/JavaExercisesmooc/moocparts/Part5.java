@@ -7,6 +7,42 @@ public class Part5 {
 //        testFitbyte();
 //        testConstructorOverload();
 //        testCounterP5();
+//        healthPersonExercise();
+        testPaymentCardEx2();
+    }
+
+    private static void testPaymentCardEx2() {
+        PaymentCardEx2 petesCard = new PaymentCardEx2(10);
+
+        System.out.println("money " + petesCard.balance());
+        boolean wasSuccessful = petesCard.takeMoney(8);
+        System.out.println("successfully withdrew: " + wasSuccessful);
+        System.out.println("money " + petesCard.balance());
+
+        wasSuccessful = petesCard.takeMoney(4);
+        System.out.println("successfully withdrew: " + wasSuccessful);
+        System.out.println("money " + petesCard.balance());
+    }
+
+    private static void healthPersonExercise() {
+        HealthStation childrensHospital = new HealthStation();
+
+        Person ethan = new Person("Ethan", 1, 110, 7);
+        Person peter = new Person("Peter", 33, 176, 85);
+
+        System.out.println("weighings performed: " + childrensHospital.weighings());
+
+        childrensHospital.weigh(ethan);
+        childrensHospital.weigh(peter);
+
+        System.out.println("weighings performed: " + childrensHospital.weighings());
+
+        childrensHospital.weigh(ethan);
+        childrensHospital.weigh(ethan);
+        childrensHospital.weigh(ethan);
+        childrensHospital.weigh(ethan);
+
+        System.out.println("weighings performed: " + childrensHospital.weighings());
     }
 
     private static void testCounterP5() {
@@ -76,6 +112,104 @@ public class Part5 {
     }
 }
 
+class PaymentCardEx2 {
+    private double balance;
+
+    public PaymentCardEx2(double balance) {
+        this.balance = balance;
+    }
+
+    public double balance() {
+        return this.balance;
+    }
+
+    public void addMoney(double increase) {
+        this.balance = this.balance + increase;
+    }
+
+    public boolean takeMoney(double amount) {
+        if (amount > balance()) {
+            System.out.println("Can't pull money that you don't have");
+            return false;
+        }
+        this.balance -= amount;
+        return true;
+    }
+}
+
+class HealthStation {
+    private int weighted;
+
+    public int weigh(Person person) {
+        weighted++;
+        return person.getWeight();
+    }
+
+    public void feed(Person person) {
+        person.setWeight(person.getWeight() + 1);
+    }
+
+    public int weighings() {
+        return weighted;
+    }
+}
+
+class Person {
+
+    private String name;
+    private int age;
+    private int weight;
+    private int height;
+
+    public Person(String name) {
+        this(name, 0, 0, 0);
+    }
+
+    public Person(String name, int age, int height, int weight) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public void growOlder() {
+        this.age = this.age + 1;
+    }
+
+    public void setHeight(int newHeight) {
+        this.height = newHeight;
+    }
+
+    public void setWeight(int newWeight) {
+        this.weight = newWeight;
+    }
+
+    public double bodyMassIndex() {
+        double heightPerHundred = this.height / 100.0;
+        return this.weight / (heightPerHundred * heightPerHundred);
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", age " + this.age + " years";
+    }
+}
 
 class Counter {
     private int counterNumber;
