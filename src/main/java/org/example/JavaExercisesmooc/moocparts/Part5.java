@@ -3,8 +3,32 @@ package org.example.JavaExercisesmooc.moocparts;
 public class Part5 {
     public static void main(String[] args) {
 //        timetTest();
-        testBookExercise();
+//        testCubeExercise();
+        testFitbyte();
+    }
 
+    private static void testFitbyte() {
+        Fitbyte assistant = new Fitbyte(30, 75);
+
+        double percentage = 0.5;
+
+        while (percentage < 1.0) {
+            double target = assistant.targetHeartRate(percentage);
+            System.out.println("Target " + (percentage * 100) + "% of maximum: " + target);
+            percentage = percentage + 0.1;
+        }
+    }
+
+    private static void testCubeExercise() {
+        Cube oSheaJackson = new Cube(4);
+        System.out.println(oSheaJackson.volume());
+        System.out.println(oSheaJackson);
+
+        System.out.println();
+
+        Cube salt = new Cube(2);
+        System.out.println(salt.volume());
+        System.out.println(salt);
     }
 
     private static void testBookExercise() {
@@ -26,6 +50,63 @@ public class Part5 {
 
             }
         }
+    }
+}
+
+class Fitbyte {
+    private int age;
+    private int restingHeartRate;
+
+    public Fitbyte(int age, int restingHeartRate) {
+        setAge(age);
+        setRestingHeartRate(restingHeartRate);
+    }
+
+    public int getRestingHeartRate() {
+        return restingHeartRate;
+    }
+
+    public void setRestingHeartRate(int restingHeartRate) {
+        this.restingHeartRate = restingHeartRate;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double targetHeartRate(double percentageOfMaximum) {
+        return (206.3 - (0.711 * age) - getRestingHeartRate()) * (percentageOfMaximum) + getRestingHeartRate();
+    }
+
+
+}
+
+class Cube {
+    private int edgeLength;
+
+    public Cube(int edgeLength) {
+        setEdgeLength(edgeLength);
+    }
+
+    public int getEdgeLength() {
+        return edgeLength;
+    }
+
+    public void setEdgeLength(int edgeLength) {
+        this.edgeLength = edgeLength;
+    }
+
+    public int volume() {
+        return getEdgeLength() * getEdgeLength() * getEdgeLength();
+    }
+
+    @Override
+    public String toString() {
+        return "The length of the edge is " + getEdgeLength() + " and the volume " + volume();
     }
 }
 
