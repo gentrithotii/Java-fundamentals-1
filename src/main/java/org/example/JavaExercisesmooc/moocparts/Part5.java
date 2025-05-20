@@ -4,7 +4,18 @@ public class Part5 {
     public static void main(String[] args) {
 //        timetTest();
 //        testCubeExercise();
-        testFitbyte();
+//        testFitbyte();
+        testConstructorOverload();
+    }
+
+    private static void testConstructorOverload() {
+        ProductP5 tapeMeasure = new ProductP5("Tape measure");
+        ProductP5 plaster = new ProductP5("Plaster", "home improvement section");
+        ProductP5 tyre = new ProductP5("Tyre", 5);
+
+        System.out.println(tapeMeasure);
+        System.out.println(plaster);
+        System.out.println(tyre);
     }
 
     private static void testFitbyte() {
@@ -50,6 +61,58 @@ public class Part5 {
 
             }
         }
+    }
+}
+
+class ProductP5 {
+    private String name;
+    private String location;
+    private Double weight;
+
+    public ProductP5(String name) {
+        setName(name);
+        setLocation("shelf");
+        setWeight(1.0);
+
+    }
+
+    public ProductP5(String name, String location) {
+        this(name);
+        setLocation(location);
+    }
+
+    public ProductP5(String name, double weight) {
+        this(name);
+        setWeight(weight);
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " (" + getWeight() + " kg) can be found from the " + getLocation();
     }
 }
 
