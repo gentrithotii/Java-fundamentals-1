@@ -5,7 +5,19 @@ public class Part5 {
 //        timetTest();
 //        testCubeExercise();
 //        testFitbyte();
-        testConstructorOverload();
+//        testConstructorOverload();
+//        testCounterP5();
+    }
+
+    private static void testCounterP5() {
+        Counter firstCounter = new Counter(2);
+
+        firstCounter.increase();
+        firstCounter.increase(5);
+        System.out.println(firstCounter.value());
+        firstCounter.decrease(5);
+        firstCounter.decrease();
+        System.out.println(firstCounter.value());
     }
 
     private static void testConstructorOverload() {
@@ -62,6 +74,38 @@ public class Part5 {
             }
         }
     }
+}
+
+
+class Counter {
+    private int counterNumber;
+
+
+    public Counter(int counterNumber) {
+        this.counterNumber = counterNumber;
+    }
+
+    public int value() {
+        return this.counterNumber;
+    }
+
+    public void increase() {
+        this.counterNumber += 1;
+    }
+
+    public void decrease() {
+        this.counterNumber -= 1;
+    }
+
+    public void increase(int amount) {
+        this.counterNumber += amount;
+    }
+
+    public void decrease(int amount) {
+        this.counterNumber -= amount;
+    }
+
+
 }
 
 class ProductP5 {
