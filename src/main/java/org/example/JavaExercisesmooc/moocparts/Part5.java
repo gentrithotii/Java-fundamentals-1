@@ -2,6 +2,18 @@ package org.example.JavaExercisesmooc.moocparts;
 
 public class Part5 {
     public static void main(String[] args) {
+//        timetTest();
+        testBookExercise();
+
+    }
+
+    private static void testBookExercise() {
+        BookP5 bookP5 = new BookP5("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 223);
+
+        System.out.println(bookP5);
+    }
+
+    private static void timetTest() {
         Timer timer = new Timer();
 
         while (true) {
@@ -15,8 +27,52 @@ public class Part5 {
             }
         }
     }
+}
+
+class BookP5 {
+    private String name;
+    private String author;
+    private int pages;
+
+    public BookP5(String name, String author, int pages) {
+        setName(name);
+        setAuthor(author);
+        setPages(pages);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public void setPages(int pages) {
+        this.pages = pages;
+    }
 
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        return sb.append(getAuthor()).append(", ").append(getName()).append(", ").append(getPages()).append(" pages")
+
+                .toString();
+    }
 }
 
 class Timer {
