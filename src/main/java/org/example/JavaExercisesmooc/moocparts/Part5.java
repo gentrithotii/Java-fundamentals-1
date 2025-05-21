@@ -8,7 +8,23 @@ public class Part5 {
 //        testConstructorOverload();
 //        testCounterP5();
 //        healthPersonExercise();
-        testPaymentCardEx2();
+//        testPaymentCardEx2();
+    testPaymentTerminal();
+    }
+
+    private static void testPaymentTerminal() {
+        PaymentTerminal unicafeExactum = new PaymentTerminal();
+
+        double change = unicafeExactum.eatAffordably(10);
+        System.out.println("remaining change " + change);
+
+        change = unicafeExactum.eatAffordably(5);
+        System.out.println("remaining change " + change);
+
+        change = unicafeExactum.eatHeartily(4.3);
+        System.out.println("remaining change " + change);
+
+        System.out.println(unicafeExactum);
     }
 
     private static void testPaymentCardEx2() {
@@ -109,6 +125,54 @@ public class Part5 {
 
             }
         }
+    }
+}
+
+class PaymentTerminal {
+    private double money;
+    private int affordableMeals;
+    private int heartyMeals;
+
+    public PaymentTerminal() {
+        this.money = 1000;
+    }
+
+    public double eatAffordably(double payment) {
+        // an affordable meal costs 2.50 euros
+        double cost = 2.50, change = 0;
+        if (payment < cost) {
+            System.out.println("No meal is sold you don't have enough");
+            return payment;
+        } else {
+            this.money += cost;
+            affordableMeals++;
+            return payment - cost;
+
+        }
+
+        // increase the amount of cash by the price of an affordable meal and return the change
+        // if the payment parameter is not large enough, no meal is sold and the method should return the whole payment
+    }
+
+    public double eatHeartily(double payment) {
+        // a hearty meal costs 4.30 euros
+        double cost = 4.30, change = 0;
+
+        if (payment < cost) {
+            System.out.println("No meal is sold you don't have enough");
+            return payment;
+        } else {
+            this.money += cost;
+            heartyMeals++;
+            return payment - cost;
+
+        }
+        // increase the amount of cash by the price of a hearty meal and return the change
+        // if the payment parameter is not large enough, no meal is sold and the method should return the whole payment
+    }
+
+    public String toString() {
+        return "money: " + money + ", number of sold affordable meals: " + affordableMeals + ", number of sold hearty meals: " + heartyMeals;
     }
 }
 
