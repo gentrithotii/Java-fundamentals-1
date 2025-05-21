@@ -9,7 +9,8 @@ public class Part5 {
 //        testCounterP5();
 //        healthPersonExercise();
 //        testPaymentCardEx2();
-        testPaymentTerminal();
+//        testPaymentTerminal();
+
     }
 
     private static void testPaymentTerminal() {
@@ -132,11 +133,92 @@ public class Part5 {
             }
         }
     }
+
+}
+
+class Pet {
+    private String dogName;
+    private String dogRace;
+
+    public Pet(String dogName, String dogRace) {
+        this.dogName = dogName;
+        this.dogRace = dogRace;
+    }
+
+    public String getDogRace() {
+        return dogRace;
+    }
+
+    public String getDogName() {
+        return dogName;
+    }
+
+}
+
+class Person {
+
+    private String name;
+    private int age;
+    private int weight;
+    private int height;
+    private Pet ownedDog;
+
+    public Person(String name, Pet ownedDog) {
+        this(name, 0, 0, 0);
+        this.ownedDog = ownedDog;
+    }
+
+    public Person(String name, int age, int height, int weight) {
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public void growOlder() {
+        this.age = this.age + 1;
+    }
+
+    public void setHeight(int newHeight) {
+        this.height = newHeight;
+    }
+
+    public void setWeight(int newWeight) {
+        this.weight = newWeight;
+    }
+
+    public double bodyMassIndex() {
+        double heightPerHundred = this.height / 100.0;
+        return this.weight / (heightPerHundred * heightPerHundred);
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", has a friend called " + this.ownedDog.getDogName() + " (" + this.ownedDog.getDogRace() + ")";
+    }
 }
 
 class PaymentTerminal {
+
     private double money;
     private int affordableMeals;
+
     private int heartyMeals;
 
     public PaymentTerminal() {
@@ -204,9 +286,11 @@ class PaymentTerminal {
     public String toString() {
         return "money: " + money + ", number of sold affordable meals: " + affordableMeals + ", number of sold hearty meals: " + heartyMeals;
     }
+
 }
 
 class PaymentCardEx2 {
+
     private double balance;
 
     public PaymentCardEx2(double balance) {
@@ -230,9 +314,11 @@ class PaymentCardEx2 {
         this.balance -= amount;
         return true;
     }
+
 }
 
 class HealthStation {
+
     private int weighted;
 
     public int weigh(Person person) {
@@ -247,63 +333,7 @@ class HealthStation {
     public int weighings() {
         return weighted;
     }
-}
 
-class Person {
-
-    private String name;
-    private int age;
-    private int weight;
-    private int height;
-
-    public Person(String name) {
-        this(name, 0, 0, 0);
-    }
-
-    public Person(String name, int age, int height, int weight) {
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
-        this.height = height;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public void growOlder() {
-        this.age = this.age + 1;
-    }
-
-    public void setHeight(int newHeight) {
-        this.height = newHeight;
-    }
-
-    public void setWeight(int newWeight) {
-        this.weight = newWeight;
-    }
-
-    public double bodyMassIndex() {
-        double heightPerHundred = this.height / 100.0;
-        return this.weight / (heightPerHundred * heightPerHundred);
-    }
-
-    @Override
-    public String toString() {
-        return this.name + ", age " + this.age + " years";
-    }
 }
 
 class Counter {
