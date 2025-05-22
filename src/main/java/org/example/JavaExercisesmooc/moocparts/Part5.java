@@ -1,5 +1,7 @@
 package org.example.JavaExercisesmooc.moocparts;
 
+import java.util.Objects;
+
 public class Part5 {
     public static void main(String[] args) {
 //        timetTest();
@@ -10,7 +12,49 @@ public class Part5 {
 //        healthPersonExercise();
 //        testPaymentCardEx2();
 //        testPaymentTerminal();
+//        testApartmentClass();
+//        testSongClassEquals();
+        testPersonEquals();
+    }
 
+    private static void testPersonEquals() {
+        SimpleDate date = new SimpleDate(24, 3, 2017);
+        SimpleDate date2 = new SimpleDate(23, 7, 2017);
+
+        Person leo = new Person("Leo", date, 62, 9);
+        Person lily = new Person("Lily", date2, 65, 8);
+
+        if (leo.equals(lily)) {
+            System.out.println("Is this quite correct?");
+        }
+
+        Person leoWithDifferentWeight = new Person("Leo", date, 62, 10);
+
+        if (leo.equals(leoWithDifferentWeight)) {
+            System.out.println("Is this quite correct 2?");
+        }
+    }
+
+    private static void testSongClassEquals() {
+        SongP5 jackSparrow = new SongP5("The Lonely Island", "Jack Sparrow", 196);
+        SongP5 anotherSparrow = new SongP5("The Lonely Island", "Jack Sparrow", 196);
+
+        if (jackSparrow.equals(anotherSparrow)) {
+            System.out.println("Songs are equal.");
+        }
+
+        if (jackSparrow.equals("Another object")) {
+            System.out.println("Strange things are afoot.");
+        }
+    }
+
+    private static void testApartmentClass() {
+        Apartment manhattanStudioApt = new Apartment(1, 16, 5500);
+        Apartment atlantaTwoBedroomApt = new Apartment(2, 38, 4200);
+        Apartment bangorThreeBedroomApt = new Apartment(3, 78, 2500);
+
+        System.out.println(manhattanStudioApt.moreExpensiveThan(atlantaTwoBedroomApt));
+        System.out.println(bangorThreeBedroomApt.moreExpensiveThan(atlantaTwoBedroomApt));
     }
 
     private static void testPaymentTerminal() {
@@ -136,23 +180,53 @@ public class Part5 {
 
 }
 
-class Pet {
-    private String dogName;
-    private String dogRace;
+class SimpleDate {
+    private int day;
+    private int month;
+    private int year;
 
-    public Pet(String dogName, String dogRace) {
-        this.dogName = dogName;
-        this.dogRace = dogRace;
+    public SimpleDate(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
     }
 
-    public String getDogRace() {
-        return dogRace;
+    public int getDay() {
+        return this.day;
     }
 
-    public String getDogName() {
-        return dogName;
+    public int getMonth() {
+        return this.month;
     }
 
+    public int getYear() {
+        return this.year;
+    }
+
+    public boolean equals(Object compared) {
+        if (this == compared) {
+            return true;
+        }
+
+        if (!(compared instanceof SimpleDate)) {
+            return false;
+        }
+
+        SimpleDate comparedSimpleDate = (SimpleDate) compared;
+
+        if (this.day == comparedSimpleDate.day &&
+                this.month == comparedSimpleDate.month &&
+                this.year == comparedSimpleDate.year) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return this.day + "." + this.month + "." + this.year;
+    }
 }
 
 class Person {
@@ -162,17 +236,29 @@ class Person {
     private int weight;
     private int height;
     private Pet ownedDog;
+    private SimpleDate birthDate;
 
     public Person(String name, Pet ownedDog) {
         this(name, 0, 0, 0);
         this.ownedDog = ownedDog;
     }
 
-    public Person(String name, int age, int height, int weight) {
+    public Person(String name, int age, int weight, int height) {
         this.name = name;
         this.age = age;
         this.weight = weight;
         this.height = height;
+    }
+
+    public Person(String name, int weight, int height) {
+        this.name = name;
+        this.weight = weight;
+        this.height = height;
+    }
+
+    public Person(String name, SimpleDate birthDate, int weight, int height) {
+        this(name, weight, height);
+        this.birthDate = birthDate;
     }
 
     public int getWeight() {
@@ -209,9 +295,116 @@ class Person {
     }
 
     @Override
+    public boolean equals(Object compare) {
+        if (this == compare) {
+            return true;
+        }
+
+        if (!(compare instanceof Person)) {
+            return false;
+        }
+        Person comparePerson = (Person) compare;
+        if (this.name.equals(comparePerson.name) && this.birthDate.equals(comparePerson.birthDate) && this.weight == comparePerson.weight && this.height == comparePerson.height) {
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
     public String toString() {
         return this.name + ", has a friend called " + this.ownedDog.getDogName() + " (" + this.ownedDog.getDogRace() + ")";
     }
+}
+
+class SongP5 {
+    private String songName;
+    private String artist;
+    private int lengthInSeconds;
+
+    public SongP5(String songName, String artist, int lengthInSeconds) {
+        this.songName = songName;
+        this.artist = artist;
+        this.lengthInSeconds = lengthInSeconds;
+    }
+
+    @Override
+    public boolean equals(Object compared) {
+        if (this == compared) {
+            return true;
+        }
+
+        if (!(compared instanceof SongP5)) {
+            return false;
+        }
+
+        SongP5 compareSong = (SongP5) compared;
+
+        if (
+                this.songName.equals(compareSong.songName)
+                        && this.artist.equals(compareSong.artist)
+                        && this.lengthInSeconds == compareSong.lengthInSeconds) {
+            return true;
+        }
+
+        return false;
+    }
+}
+
+class Apartment {
+    private int rooms;
+    private int squares;
+    private int pricePerSquare;
+
+    public Apartment(int rooms, int squares, int pricePerSquare) {
+        this.rooms = rooms;
+        this.squares = squares;
+        this.pricePerSquare = pricePerSquare;
+    }
+
+    public boolean moreExpensiveThan(Apartment compared) {
+        int thisObjectPrice = this.pricePerSquare * this.squares;
+        int comparedPrice = compared.pricePerSquare * compared.squares;
+        if (thisObjectPrice > comparedPrice) {
+            return true;
+        }
+        return false;
+    }
+
+    public int priceDifference(Apartment compared) {
+        int thisObjectPrice = this.pricePerSquare * this.squares;
+        int comparedPrice = compared.pricePerSquare * compared.squares;
+        if (thisObjectPrice > comparedPrice) {
+            return thisObjectPrice - comparedPrice;
+        }
+        return comparedPrice - thisObjectPrice;
+    }
+
+    public boolean largerThan(Apartment compared) {
+        if (this.squares > compared.squares) {
+            return true;
+        }
+        return false;
+    }
+}
+
+class Pet {
+    private String dogName;
+    private String dogRace;
+
+    public Pet(String dogName, String dogRace) {
+        this.dogName = dogName;
+        this.dogRace = dogRace;
+    }
+
+    public String getDogRace() {
+        return dogRace;
+    }
+
+    public String getDogName() {
+        return dogName;
+    }
+
 }
 
 class PaymentTerminal {
