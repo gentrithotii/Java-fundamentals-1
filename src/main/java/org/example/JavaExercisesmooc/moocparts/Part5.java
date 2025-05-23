@@ -21,9 +21,9 @@ public class Part5 {
 //        testPersonEquals();
 //        testBookExerciseEx2(userInput);
 //        testSimpleDateAdvance();
-//        testMoney();
+        testMoney();
 //        testMoneyLessThen();
-        testReduceMoney();
+//        testReduceMoney();
     }
 
     private static void testReduceMoney() {
@@ -299,9 +299,11 @@ class Money {
 
     public Money plus(Money addition) {
         int totalCents = this.cents + addition.cents;
+        System.out.println("Total Cents: " + totalCents);
         int totalEuros = this.euros + addition.euros + totalCents / 100;
+        System.out.println("Total Euros: " + totalEuros);
         int newCents = totalCents % 100;
-
+        System.out.println(newCents);
         return new Money(totalEuros, newCents);
     }
 
