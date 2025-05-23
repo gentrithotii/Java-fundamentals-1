@@ -19,7 +19,26 @@ public class Part5 {
 //        testApartmentClass();
 //        testSongClassEquals();
 //        testPersonEquals();
-        testBookExerciseEx2(userInput);
+//        testBookExerciseEx2(userInput);
+        testSimpleDateAdvance();
+    }
+
+    private static void testSimpleDateAdvance() {
+        SimpleDate date = new SimpleDate(13, 2, 2015);
+        System.out.println("Friday of the examined week is " + date);
+
+        SimpleDate newDate = date.afterNumberOfDays(7);
+        int week = 1;
+        while (week <= 7) {
+            System.out.println("Friday after " + week + " weeks is " + newDate);
+            newDate = newDate.afterNumberOfDays(7);
+
+            week = week + 1;
+        }
+
+
+        System.out.println("The date after 790 days from the examined Friday is ... try it out yourself!");
+        System.out.println("Try " + date.afterNumberOfDays(790));
     }
 
     private static void testBookExerciseEx2(Scanner sc) {
@@ -211,34 +230,6 @@ public class Part5 {
 
 }
 
-class BookEx2 {
-    private String bookName;
-    private int publicationYear;
-
-    public BookEx2(String bookName, int publicationYear) {
-        this.bookName = bookName;
-        this.publicationYear = publicationYear;
-    }
-
-    @Override
-    public boolean equals(Object compare) {
-        if (this == compare) {
-            return true;
-        }
-
-        if (!(compare instanceof BookEx2)) {
-            return false;
-        }
-        BookEx2 compareBook = (BookEx2) compare;
-
-        if (this.bookName.equals(compareBook.bookName) && this.publicationYear == compareBook.publicationYear) {
-            return true;
-        }
-
-        return false;
-    }
-}
-
 class SimpleDate {
     private int day;
     private int month;
@@ -250,16 +241,29 @@ class SimpleDate {
         this.year = year;
     }
 
-    public int getDay() {
-        return this.day;
+    public void advance() {
+        this.day++;
+        if (this.day > 30) {
+            this.month++;
+            this.day = 1;
+        }
+        if (this.month > 12) {
+            this.year++;
+            this.month = 1;
+        }
     }
 
-    public int getMonth() {
-        return this.month;
+    public void advance(int howManyDays) {
+        for (int i = 0; i < howManyDays; i++) {
+            advance();
+        }
     }
 
-    public int getYear() {
-        return this.year;
+    public SimpleDate afterNumberOfDays(int days) {
+        advance(days);
+        SimpleDate newDate = new SimpleDate(this.day, this.month, this.year);
+
+        return newDate;
     }
 
     public boolean equals(Object compared) {
@@ -285,6 +289,34 @@ class SimpleDate {
     @Override
     public String toString() {
         return this.day + "." + this.month + "." + this.year;
+    }
+}
+
+class BookEx2 {
+    private String bookName;
+    private int publicationYear;
+
+    public BookEx2(String bookName, int publicationYear) {
+        this.bookName = bookName;
+        this.publicationYear = publicationYear;
+    }
+
+    @Override
+    public boolean equals(Object compare) {
+        if (this == compare) {
+            return true;
+        }
+
+        if (!(compare instanceof BookEx2)) {
+            return false;
+        }
+        BookEx2 compareBook = (BookEx2) compare;
+
+        if (this.bookName.equals(compareBook.bookName) && this.publicationYear == compareBook.publicationYear) {
+            return true;
+        }
+
+        return false;
     }
 }
 
