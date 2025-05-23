@@ -1,9 +1,13 @@
 package org.example.JavaExercisesmooc.moocparts;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Part5 {
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
 //        timetTest();
 //        testCubeExercise();
 //        testFitbyte();
@@ -14,7 +18,34 @@ public class Part5 {
 //        testPaymentTerminal();
 //        testApartmentClass();
 //        testSongClassEquals();
-        testPersonEquals();
+//        testPersonEquals();
+        testBookExerciseEx2(userInput);
+    }
+
+    private static void testBookExerciseEx2(Scanner sc) {
+        List<BookEx2> bookList = new ArrayList<>();
+
+        while (true) {
+
+            System.out.print("Enter the name of the Book: ");
+            String bookName = sc.nextLine();
+
+            if (bookName.isEmpty() || bookName.isBlank()) {
+                break;
+            }
+
+            System.out.print("Enter the book year: ");
+            int bookYear = Integer.parseInt(sc.nextLine());
+
+            BookEx2 bookToAdd = new BookEx2(bookName, bookYear);
+
+            if (bookList.contains(bookToAdd)) {
+                System.out.println("Book already Exists cant add it");
+            } else {
+                bookList.add(bookToAdd);
+            }
+        }
+        System.out.println("Thank you! Books added: " + bookList.size());
     }
 
     private static void testPersonEquals() {
@@ -178,6 +209,34 @@ public class Part5 {
         }
     }
 
+}
+
+class BookEx2 {
+    private String bookName;
+    private int publicationYear;
+
+    public BookEx2(String bookName, int publicationYear) {
+        this.bookName = bookName;
+        this.publicationYear = publicationYear;
+    }
+
+    @Override
+    public boolean equals(Object compare) {
+        if (this == compare) {
+            return true;
+        }
+
+        if (!(compare instanceof BookEx2)) {
+            return false;
+        }
+        BookEx2 compareBook = (BookEx2) compare;
+
+        if (this.bookName.equals(compareBook.bookName) && this.publicationYear == compareBook.publicationYear) {
+            return true;
+        }
+
+        return false;
+    }
 }
 
 class SimpleDate {
