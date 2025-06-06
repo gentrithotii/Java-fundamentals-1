@@ -9,10 +9,49 @@ public class Part6 {
 //        testSuitcase();
 //        testSuitcaseWithMaxWeight();
 //        testSuitcaseP4();
-        testSuitcaseP5();
-
+//        testSuitcaseP5();
+//        testSuitcaseP6();
+        testSuitcaseP7();
     }
 
+    public static void testSuitcaseP7() {
+        ItemEX2 book = new ItemEX2("Lord of the rings", 2);
+        ItemEX2 phone = new ItemEX2("Nokia 3210", 1);
+        ItemEX2 brick = new ItemEX2("brick", 4);
+
+        Suitcase adasCase = new Suitcase(10);
+        adasCase.addItem(book);
+        adasCase.addItem(phone);
+
+        Suitcase pekkasCase = new Suitcase(10);
+        pekkasCase.addItem(brick);
+
+        Hold hold = new Hold(1000);
+        hold.addSuitcase(adasCase);
+        hold.addSuitcase(pekkasCase);
+
+        System.out.println("The suitcases in the hold contain the following items:");
+        hold.printItems();
+    }
+
+    public static void testSuitcaseP6() {
+        ItemEX2 book = new ItemEX2("Lord of the rings", 2);
+        ItemEX2 phone = new ItemEX2("Nokia 3210", 1);
+        ItemEX2 brick = new ItemEX2("brick", 4);
+
+        Suitcase adasCase = new Suitcase(10);
+        adasCase.addItem(book);
+        adasCase.addItem(phone);
+
+        Suitcase pekkasCase = new Suitcase(10);
+        pekkasCase.addItem(brick);
+
+        Hold hold = new Hold(1000);
+        hold.addSuitcase(adasCase);
+        hold.addSuitcase(pekkasCase);
+
+        System.out.println(hold);
+    }
 
     public static void testSuitcaseP5() {
         ItemEX2 book = new ItemEX2("Lord of the rings", 1);
@@ -27,7 +66,6 @@ public class Part6 {
         ItemEX2 heaviest = suitcase.heaviestItem();
         System.out.println("Heaviest item: " + heaviest);
     }
-
 
     public static void testSuitcaseP4() {
         ItemEX2 book = new ItemEX2("Lord of the rings", 2);
@@ -76,9 +114,46 @@ public class Part6 {
 
 }
 
+class Hold {
+    private List<Suitcase> suitcases;
+    private int maxWeight;
+
+    public Hold(int maxWeight) {
+        this.maxWeight = maxWeight;
+        this.suitcases = new ArrayList<>();
+    }
+
+    public void printItems() {
+        for (Suitcase sc : suitcases) {
+            sc.printItems();
+        }
+    }
+
+    public int checkCurrentSuitcaseWeight() {
+        int totalWeightOfAllCases = 0;
+        for (Suitcase i : suitcases) {
+            totalWeightOfAllCases += i.getCurrentTotalWeight();
+        }
+        return totalWeightOfAllCases;
+    }
+
+    public void addSuitcase(Suitcase suitcase) {
+        int totalWithItemToAdd = checkCurrentSuitcaseWeight() + suitcase.getCurrentTotalWeight();
+        if (totalWithItemToAdd < maxWeight) {
+            suitcases.add(suitcase);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return suitcases.size() + " " +
+                "suitcases (" + checkCurrentSuitcaseWeight() + " kg)";
+    }
+}
+
 class Suitcase {
-    private int maximumWeight;
     private List<ItemEX2> items;
+    private int maximumWeight;
 
     public Suitcase(int maximumWeight) {
         this.maximumWeight = maximumWeight;
