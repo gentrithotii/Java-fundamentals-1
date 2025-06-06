@@ -6,8 +6,42 @@ import java.util.stream.Collectors;
 
 public class Part6 {
     public static void main(String[] args) {
-//        testSuitCase();
-        testSuitcaseWithMaxWeight();
+//        testSuitcase();
+//        testSuitcaseWithMaxWeight();
+//        testSuitcaseP4();
+        testSuitcaseP5();
+
+    }
+
+
+    public static void testSuitcaseP5() {
+        ItemEX2 book = new ItemEX2("Lord of the rings", 1);
+        ItemEX2 phone = new ItemEX2("Nokia 3210", 2);
+        ItemEX2 brick = new ItemEX2("Brick", 4);
+
+        Suitcase suitcase = new Suitcase(10);
+        suitcase.addItem(book);
+        suitcase.addItem(phone);
+        suitcase.addItem(brick);
+
+        ItemEX2 heaviest = suitcase.heaviestItem();
+        System.out.println("Heaviest item: " + heaviest);
+    }
+
+
+    public static void testSuitcaseP4() {
+        ItemEX2 book = new ItemEX2("Lord of the rings", 2);
+        ItemEX2 phone = new ItemEX2("Nokia 3210", 1);
+        ItemEX2 brick = new ItemEX2("brick", 4);
+
+        Suitcase suitcase = new Suitcase(10);
+        suitcase.addItem(book);
+        suitcase.addItem(phone);
+        suitcase.addItem(brick);
+
+        System.out.println("The suitcase contains the following items:");
+        suitcase.printItems();
+        System.out.println("Total weight: " + suitcase.getCurrentTotalWeight() + " kg");
     }
 
     public static void testSuitcaseWithMaxWeight() {
@@ -28,7 +62,7 @@ public class Part6 {
         System.out.println(suitcase);
     }
 
-    public static void testSuitCase() {
+    public static void testSuitcase() {
         ItemEX2 book = new ItemEX2("The lord of the rings", 2);
         ItemEX2 phone = new ItemEX2("Nokia 3210", 1);
 
@@ -52,19 +86,42 @@ class Suitcase {
     }
 
     public void addItem(ItemEX2 item) {
+
+        int totalWeight = getCurrentTotalWeight() + item.getWeight();
+
+        if (totalWeight > maximumWeight) {
+            System.out.println("Cant add more");
+        } else {
+            items.add(item);
+        }
+    }
+
+    public int getCurrentTotalWeight() {
         int currentweight = 0;
 
         for (ItemEX2 listItem : items) {
             currentweight += listItem.getWeight();
         }
+        return currentweight;
+    }
 
-        int test = currentweight + item.getWeight();
-
-        if (test > maximumWeight) {
-            System.out.println("Cant add more");
-        } else {
-            items.add(item);
+    public void printItems() {
+        for (ItemEX2 i : items) {
+            System.out.println(i.getName() + " (" + i.getWeight() + " kg)");
         }
+    }
+
+    public ItemEX2 heaviestItem() {
+
+        ItemEX2 highest = items.get(0);
+
+        for (int i = 0; i < items.size(); i++) {
+            if (highest.getWeight() < items.get(i).getWeight()) {
+                highest = items.get(i);
+            }
+        }
+
+        return highest;
     }
 
     public String differentString() {
@@ -76,20 +133,12 @@ class Suitcase {
         return "items ";
     }
 
-    private int getWeight() {
-        int weight = 0;
-        for (ItemEX2 item : items) {
-            weight += item.getWeight();
-        }
-        return weight;
-    }
-
     @Override
     public String toString() {
         if (items.size() == 0) {
             return differentString();
         }
-        return items.size()+ " " + differentString() + " (" + getWeight() + " kg)";
+        return items.size() + " " + differentString() + " (" + getCurrentTotalWeight() + " kg)";
     }
 }
 
@@ -112,10 +161,9 @@ class ItemEX2 {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return
                 "name='" + name + '\'' +
-                ", weight=" + weight +
-                '}';
+                        "(" + weight + " kg)";
     }
 }
 
