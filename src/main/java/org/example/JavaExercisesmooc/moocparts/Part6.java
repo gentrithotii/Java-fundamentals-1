@@ -13,7 +13,16 @@ public class Part6 {
 //        testSimpleDictionary();
 //        testSimpleDictionaryP2();
 //        testSimpleDictionaryP3();
-        testJokeP1();
+//        testJokeP1();
+        testJokeP2();
+    }
+
+    public static void testJokeP2() {
+        JokeManager manager = new JokeManager();
+        Scanner scanner = new Scanner(System.in);
+
+        UserInterface ui = new UserInterface(scanner, manager);
+        ui.start();
     }
 
     public static void testJokeP1() {
@@ -181,6 +190,55 @@ class JokeManager {
     }
 }
 
+class UserInterface {
+    private Scanner scanner;
+    private JokeManager jokeManager;
+
+    public UserInterface(Scanner scanner, JokeManager jokeManager) {
+        this.scanner = scanner;
+        this.jokeManager = jokeManager;
+    }
+
+    public void start() {
+
+        while (true) {
+            System.out.println("Commands");
+            System.out.println("1 - Add a joke");
+            System.out.println("2 - Draw a joke");
+            System.out.println("3 - List of jokes");
+            System.out.println("X - STOP");
+
+            String userInput = scanner.nextLine();
+
+            if (userInput.equals("1")) {
+                System.out.print("Write joke to be added: ");
+                String userJoke = scanner.nextLine();
+                jokeManager.addJoke(userJoke);
+
+            } else if (userInput.equals("2")) {
+
+                String isJokeViable = jokeManager.drawJokes();
+
+                if (isJokeViable == null) {
+                    System.out.println("Jokes are short in supply.");
+                }
+                System.out.println(isJokeViable);
+
+            } else if (userInput.equals("3")) {
+
+                System.out.println("Printing the jokes");
+                jokeManager.printJokes();
+
+            } else if (userInput.equals("X")) {
+                break;
+            } else {
+                System.out.println("Unknown command");
+            }
+
+        }
+    }
+}
+
 class TextUI {
     private Scanner scanner;
     private SimpleDictionary simpleDictionary;
@@ -221,7 +279,6 @@ class TextUI {
 
         }
     }
-
 }
 
 class SimpleDictionary {
