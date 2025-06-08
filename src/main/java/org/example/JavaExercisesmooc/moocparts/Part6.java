@@ -1,8 +1,9 @@
 package org.example.JavaExercisesmooc.moocparts;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class Part6 {
     public static void main(String[] args) {
@@ -11,7 +12,18 @@ public class Part6 {
 //        testSuitcaseP4();
 //        testSuitcaseP5();
 //        testSuitcaseP6();
-        testSuitcaseP7();
+//        testSuitcaseP7();
+        testSimpleDictionary();
+    }
+
+    public static void testSimpleDictionary() {
+        SimpleDictionary book = new SimpleDictionary();
+        book.add("one", "yksi");
+        book.add("two", "kaksi");
+
+        System.out.println(book.translate("one"));
+        System.out.println(book.translate("two"));
+        System.out.println(book.translate("three"));
     }
 
     public static void testSuitcaseP7() {
@@ -112,6 +124,24 @@ public class Part6 {
     }
 
 
+}
+
+class SimpleDictionary {
+    private String word;
+    private String wordTranslation;
+    private Map<String, String> wordTranslateToList;
+
+    public SimpleDictionary() {
+        this.wordTranslateToList = new HashMap<>();
+    }
+
+    public void add(String word, String wordTranslation) {
+        wordTranslateToList.put(word, wordTranslation);
+    }
+
+    public String translate(String word) {
+        return wordTranslateToList.get(word);
+    }
 }
 
 class Hold {
