@@ -1,9 +1,6 @@
 package org.example.JavaExercisesmooc.moocparts;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Part6 {
     public static void main(String[] args) {
@@ -13,7 +10,26 @@ public class Part6 {
 //        testSuitcaseP5();
 //        testSuitcaseP6();
 //        testSuitcaseP7();
-        testSimpleDictionary();
+//        testSimpleDictionary();
+//        testSimpleDictionaryP2();
+        testSimpleDictionaryP3();
+    }
+
+
+    public static void testSimpleDictionaryP3() {
+        Scanner scanner = new Scanner(System.in);
+        SimpleDictionary dictionary = new SimpleDictionary();
+
+        TextUI textUI = new TextUI(scanner, dictionary);
+        textUI.start();
+    }
+
+    public static void testSimpleDictionaryP2() {
+        Scanner scanner = new Scanner(System.in);
+        SimpleDictionary dictionary = new SimpleDictionary();
+
+        TextUI ui = new TextUI(scanner, dictionary);
+        ui.start();
     }
 
     public static void testSimpleDictionary() {
@@ -123,6 +139,49 @@ public class Part6 {
         System.out.println("Phone: " + phone);
     }
 
+
+}
+
+class TextUI {
+    private Scanner scanner;
+    private SimpleDictionary simpleDictionary;
+
+    public TextUI(Scanner scanner, SimpleDictionary simpleDictionary) {
+        this.scanner = scanner;
+        this.simpleDictionary = simpleDictionary;
+    }
+
+    public void start() {
+
+        while (true) {
+            System.out.print("Command: ");
+            String userInput = scanner.nextLine();
+
+            if (userInput.equals("add")) {
+                System.out.print("Word to add: ");
+                String userWord = scanner.nextLine();
+                System.out.print("Word translation: ");
+                String wordTranslation = scanner.nextLine();
+
+                simpleDictionary.add(userWord, wordTranslation);
+            } else if (userInput.equals("end")) {
+                System.out.println("Bye bye!");
+                break;
+            } else if (userInput.equals("search")) {
+                System.out.print("Enter the user word to translate: ");
+                String userWordToTranslate = scanner.nextLine();
+                String wordFound = simpleDictionary.translate(userWordToTranslate);
+                if (wordFound == null) {
+                    System.out.println("Word " + userWordToTranslate + " was not found");
+                } else {
+                    System.out.println(wordFound);
+                }
+            } else {
+                System.out.println("Unknown command");
+            }
+
+        }
+    }
 
 }
 
