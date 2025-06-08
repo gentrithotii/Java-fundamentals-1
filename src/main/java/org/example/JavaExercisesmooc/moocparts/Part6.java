@@ -12,9 +12,24 @@ public class Part6 {
 //        testSuitcaseP7();
 //        testSimpleDictionary();
 //        testSimpleDictionaryP2();
-        testSimpleDictionaryP3();
+//        testSimpleDictionaryP3();
+        testJokeP1();
     }
 
+    public static void testJokeP1() {
+        JokeManager manager = new JokeManager();
+        manager.addJoke("What is red and smells of blue paint? - Red paint.");
+        manager.addJoke("What is blue and smells of red paint? - Blue paint.");
+
+        System.out.println("Drawing jokes:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(manager.drawJokes());
+        }
+
+        System.out.println("");
+        System.out.println("Printing jokes:");
+        manager.printJokes();
+    }
 
     public static void testSimpleDictionaryP3() {
         Scanner scanner = new Scanner(System.in);
@@ -140,6 +155,30 @@ public class Part6 {
     }
 
 
+}
+
+class JokeManager {
+    private List<String> jokes;
+
+    public JokeManager() {
+        this.jokes = new ArrayList<>();
+    }
+
+    public void addJoke(String joke) {
+        jokes.add(joke);
+    }
+
+    public String drawJokes() {
+        int randomNum = (int) (Math.random() * jokes.size());
+        String joke = jokes.get(randomNum);
+        return joke;
+    }
+
+    public void printJokes() {
+        for (String joke : jokes) {
+            System.out.println(joke);
+        }
+    }
 }
 
 class TextUI {
