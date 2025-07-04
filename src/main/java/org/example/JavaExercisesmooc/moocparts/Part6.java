@@ -14,7 +14,7 @@ public class Part6 {
 //        testSimpleDictionaryP2();
 //        testSimpleDictionaryP3();
 //        testJokeP1();
-        testJokeP2();
+//        testJokeP2();
     }
 
     public static void testJokeP2() {
