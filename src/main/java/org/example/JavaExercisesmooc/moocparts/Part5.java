@@ -21,7 +21,7 @@ public class Part5 {
 //        testPersonEquals();
 //        testBookExerciseEx2(userInput);
 //        testSimpleDateAdvance();
-        testMoney();
+//        testMoney();
 //        testMoneyLessThen();
 //        testReduceMoney();
     }
