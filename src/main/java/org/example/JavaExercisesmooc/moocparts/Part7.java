@@ -23,9 +23,19 @@ public class Part7 {
 //        System.out.println(Arrays.toString(numbers));
 //        swap(numbers, 0, 3);
 //        System.out.println(Arrays.toString(numbers));
-
+        int[] numbers = {8, 3, 7, 9, 1, 2, 4};
+        sort(numbers);
     }
 
+    public static void sort(int[] array) {
+        int smallest = 0;
+
+        for(int i = 0; i < array.length; i++){
+            System.out.println(Arrays.toString(array));
+            swap(array, i, indexOfSmallestFrom(array, i));
+        }
+
+    }
 
     public static void swap(int[] array, int index1, int index2) {
         int  holdValue = array[index1];
