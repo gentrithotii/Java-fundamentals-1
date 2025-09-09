@@ -1,7 +1,6 @@
 package org.example.JavaExercisesmooc.moocparts;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Part7 {
     public static void main(String[] args) {
@@ -23,14 +22,37 @@ public class Part7 {
 //        System.out.println(Arrays.toString(numbers));
 //        swap(numbers, 0, 3);
 //        System.out.println(Arrays.toString(numbers));
-        int[] numbers = {8, 3, 7, 9, 1, 2, 4};
-        sort(numbers);
+//        int[] numbers = {8, 3, 7, 9, 1, 2, 4};
+//        sort(numbers);
+//        ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(8, 3, 7, 9, 1, 2, 4));
+//        sortIntegers(integers);
+
     }
 
     public static void sort(int[] array) {
+        System.out.println(Arrays.toString(array));
+        Arrays.sort(array);
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void sort(String[] array) {
+        Arrays.sort(array);
+    }
+
+    public static void sortIntegers(ArrayList<Integer> integers) {
+        System.out.println(integers);
+        Collections.sort(integers);
+        System.out.println(integers);
+    }
+
+    public static void sortStrings(ArrayList<String> strings) {
+    Collections.sort(strings);
+    }
+
+    public static void sort1(int[] array) {
         int smallest = 0;
 
-        for(int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             System.out.println(Arrays.toString(array));
             swap(array, i, indexOfSmallestFrom(array, i));
         }
@@ -38,12 +60,12 @@ public class Part7 {
     }
 
     public static void swap(int[] array, int index1, int index2) {
-        int  holdValue = array[index1];
+        int holdValue = array[index1];
         array[index1] = array[index2];
         array[index2] = holdValue;
     }
 
-    private  void exercise1(Scanner sc) {
+    private void exercise1(Scanner sc) {
         Container firstContainer = new Container();
         Container secondContainer = new Container();
         String command = "";
@@ -103,20 +125,21 @@ public class Part7 {
         int smallest = table[startIndex];
         int index = 0;
 
-        for(int i = startIndex; i < table.length; i++){
-            if(smallest >= table[i]){
+        for (int i = startIndex; i < table.length; i++) {
+            if (smallest >= table[i]) {
                 smallest = table[i];
                 index = i;
             }
         }
-        return index;    }
+        return index;
+    }
 
-    public static int indexOfSmallest(int[] array){
+    public static int indexOfSmallest(int[] array) {
         int smallest = array[0];
         int index = 0;
 
-        for(int i = 1; i < array.length; i++){
-            if(smallest >= array[i]){
+        for (int i = 1; i < array.length; i++) {
+            if (smallest >= array[i]) {
                 smallest = array[i];
                 index = i;
             }
@@ -125,18 +148,19 @@ public class Part7 {
     }
 
 
-    public static int smallest(int[] array){
-    int smallest = array[0];
+    public static int smallest(int[] array) {
+        int smallest = array[0];
 
-    for(int i = 1; i < array.length; i++){
-        if(smallest >= array[i]){
-            smallest = array[i];
+        for (int i = 1; i < array.length; i++) {
+            if (smallest >= array[i]) {
+                smallest = array[i];
+            }
         }
-    }
-       return smallest;
+        return smallest;
     }
 }
- class Container {
+
+class Container {
     private int volumeLiters;
     private final int maxLiterSize = 100;
 
