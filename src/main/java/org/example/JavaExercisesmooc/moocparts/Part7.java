@@ -26,24 +26,24 @@ public class Part7 {
 //        sort(numbers);
 //        ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(8, 3, 7, 9, 1, 2, 4));
 //        sortIntegers(integers);
-        List<BookP7> books = new ArrayList<>(Arrays.asList(
-                new BookP7(7, "Book7"),
-                new BookP7(5, "Book5"),
-                new BookP7(6, "Book6"),
-                new BookP7(2, "Book2"),
-                new BookP7(10, "Book10"),
-                new BookP7(1, "Book1"),
-                new BookP7(4, "Book4"),
-                new BookP7(8, "Book8"),
-                new BookP7(9, "Book9"),
-                new BookP7(3, "Book3")
-        )
-        );
-
-//        System.out.println(linearSearch(books, 5));
-        books.sort(Comparator.comparing(BookP7::getId));
-
-        System.out.println(binarySearch(books, 9));
+//        List<BookP7> books = new ArrayList<>(Arrays.asList(
+//                new BookP7(7, "Book7"),
+//                new BookP7(5, "Book5"),
+//                new BookP7(6, "Book6"),
+//                new BookP7(2, "Book2"),
+//                new BookP7(10, "Book10"),
+//                new BookP7(1, "Book1"),
+//                new BookP7(4, "Book4"),
+//                new BookP7(8, "Book8"),
+//                new BookP7(9, "Book9"),
+//                new BookP7(3, "Book3")
+//        )
+//        );
+//
+////        System.out.println(linearSearch(books, 5));
+//        books.sort(Comparator.comparing(BookP7::getId));
+//
+//        System.out.println(binarySearch(books, 3));
 
     }
 
