@@ -26,7 +26,63 @@ public class Part7 {
 //        sort(numbers);
 //        ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(8, 3, 7, 9, 1, 2, 4));
 //        sortIntegers(integers);
+        List<BookP7> books = new ArrayList<>(Arrays.asList(
+                new BookP7(7, "Book7"),
+                new BookP7(5, "Book5"),
+                new BookP7(6, "Book6"),
+                new BookP7(2, "Book2"),
+                new BookP7(10, "Book10"),
+                new BookP7(1, "Book1"),
+                new BookP7(4, "Book4"),
+                new BookP7(8, "Book8"),
+                new BookP7(9, "Book9"),
+                new BookP7(3, "Book3")
+        )
+        );
 
+//        System.out.println(linearSearch(books, 5));
+        books.sort(Comparator.comparing(BookP7::getId));
+
+        System.out.println(binarySearch(books, 9));
+
+    }
+
+    public static int binarySearch(List<BookP7> books, int searchedId) {
+        int beginning = 0;
+        int endIndex = books.size() - 1;
+
+        while (beginning <= endIndex) {
+            int middle = (beginning + endIndex) / 2;
+            int currentId = books.get(middle).getId();
+
+            System.out.println("Beginning : " + beginning);
+            System.out.println("End: " + endIndex);
+            System.out.println("Middle : " + middle);
+            System.out.println(" ");
+
+            if (currentId == searchedId) {
+                return middle;
+            } else if (currentId < searchedId) {
+                beginning = middle + 1;
+            } else {
+                endIndex = middle - 1;
+            }
+
+        }
+
+        return -1;
+    }
+
+    public static int linearSearch(List<BookP7> books, int searchedId) {
+
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId() == searchedId) {
+                System.out.println(i);
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     public static void sort(int[] array) {
@@ -46,7 +102,7 @@ public class Part7 {
     }
 
     public static void sortStrings(ArrayList<String> strings) {
-    Collections.sort(strings);
+        Collections.sort(strings);
     }
 
     public static void sort1(int[] array) {
@@ -63,6 +119,19 @@ public class Part7 {
         int holdValue = array[index1];
         array[index1] = array[index2];
         array[index2] = holdValue;
+    }
+
+    public static int indexOfSmallestFrom(int[] table, int startIndex) {
+        int smallest = table[startIndex];
+        int index = 0;
+
+        for (int i = startIndex; i < table.length; i++) {
+            if (smallest >= table[i]) {
+                smallest = table[i];
+                index = i;
+            }
+        }
+        return index;
     }
 
     private void exercise1(Scanner sc) {
@@ -121,19 +190,6 @@ public class Part7 {
 
     }
 
-    public static int indexOfSmallestFrom(int[] table, int startIndex) {
-        int smallest = table[startIndex];
-        int index = 0;
-
-        for (int i = startIndex; i < table.length; i++) {
-            if (smallest >= table[i]) {
-                smallest = table[i];
-                index = i;
-            }
-        }
-        return index;
-    }
-
     public static int indexOfSmallest(int[] array) {
         int smallest = array[0];
         int index = 0;
@@ -157,6 +213,40 @@ public class Part7 {
             }
         }
         return smallest;
+    }
+}
+
+class BookP7 {
+    private int id;
+    private String name;
+
+    public BookP7(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "BookP7{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
 
