@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Part7 {
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 //        exercise1(sc);
 //        int[] numbers = {6, 5, 8, 7, 11, 3};
 //        System.out.println("Smallest: " + smallest(numbers));
@@ -44,7 +44,32 @@ public class Part7 {
 //        books.sort(Comparator.comparing(BookP7::getId));
 //
 //        System.out.println(binarySearch(books, 3));
+        gradeStatistics(sc);
+    }
 
+    public static void gradeStatistics(Scanner sc) {
+        double sum = 0;
+        boolean loopi = true;
+        List<Integer> grades = new ArrayList<>();
+        System.out.print("Enter points totals, -1 stops: ");
+        while (loopi) {
+            String userInput = sc.nextLine();
+            int number = Integer.parseInt(userInput);
+            if (number <= 100 && number > 0) {
+                grades.add(number);
+            }
+
+            if (userInput.equals("-1")) {
+                loopi = false;
+            }
+
+        }
+        for (Integer grade : grades) {
+            sum += grade;
+        }
+
+        double average = sum / grades.size() ;
+        System.out.println("Point average(all): " + average);
     }
 
     public static int binarySearch(List<BookP7> books, int searchedId) {
@@ -69,7 +94,6 @@ public class Part7 {
             }
 
         }
-
         return -1;
     }
 
