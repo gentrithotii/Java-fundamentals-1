@@ -48,11 +48,11 @@ public class Part7 {
     }
 
     public static void gradeStatistics(Scanner sc) {
-        double sum = 0;
-        boolean loopi = true;
+        double sum = 0, passingSum = 0;
+        int passingCounter = 0;
         List<Integer> grades = new ArrayList<>();
         System.out.print("Enter points totals, -1 stops: ");
-        while (loopi) {
+        while (true) {
             String userInput = sc.nextLine();
             int number = Integer.parseInt(userInput);
             if (number <= 100 && number > 0) {
@@ -60,16 +60,28 @@ public class Part7 {
             }
 
             if (userInput.equals("-1")) {
-                loopi = false;
+                break;
             }
 
         }
         for (Integer grade : grades) {
             sum += grade;
+            if (grade >= 50) {
+                passingSum += grade;
+                passingCounter++;
+            }
         }
 
-        double average = sum / grades.size() ;
+        double average = sum / grades.size();
+        double averagePassing = passingSum / passingCounter;
+        double passingPercent = (passingCounter * 100.0) / grades.size();
+
+        if (passingCounter == 0) {
+            averagePassing = 0;
+        }
         System.out.println("Point average(all): " + average);
+        System.out.println("Point average(passing): " + averagePassing);
+        System.out.println("Pass percentage: " + passingPercent);
     }
 
     public static int binarySearch(List<BookP7> books, int searchedId) {
