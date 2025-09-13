@@ -55,13 +55,14 @@ public class Part7 {
         while (true) {
             String userInput = sc.nextLine();
             int number = Integer.parseInt(userInput);
+            if (number == -1) {
+                break;
+            }
+
             if (number <= 100 && number > 0) {
                 grades.add(number);
             }
 
-            if (userInput.equals("-1")) {
-                break;
-            }
 
         }
         for (Integer grade : grades) {
@@ -73,15 +74,56 @@ public class Part7 {
         }
 
         double average = sum / grades.size();
-        double averagePassing = passingSum / passingCounter;
+        if (passingCounter == 0) {
+            System.out.println("Point average (passing): -");
+        } else {
+            double averagePassing = passingSum / passingCounter;
+            System.out.println("Point average (passing): " + averagePassing);
+        }
         double passingPercent = (passingCounter * 100.0) / grades.size();
 
-        if (passingCounter == 0) {
-            averagePassing = 0;
-        }
+
         System.out.println("Point average(all): " + average);
-        System.out.println("Point average(passing): " + averagePassing);
         System.out.println("Pass percentage: " + passingPercent);
+
+        gradeDistribution(grades);
+
+    }
+
+    public static void gradeDistribution(List<Integer> grades) {
+        int fails = 0, one = 0, two = 0, three = 0, four = 0, five = 0;
+        for (Integer grade : grades) {
+            if (grade < 50) {
+                fails++;
+
+            } else if (grade < 60) {
+                one++;
+            } else if (grade < 70) {
+                two++;
+            } else if (grade < 80) {
+                three++;
+            } else if (grade < 90) {
+                four++;
+            } else if (grade >= 90) {
+                five++;
+            }
+        }
+
+        System.out.println("Grade distribution:");
+        System.out.println("5: " + generateStars(five));
+        System.out.println("4: " + generateStars(four));
+        System.out.println("3: " + generateStars(three));
+        System.out.println("2: " + generateStars(two));
+        System.out.println("1: " + generateStars(one));
+        System.out.println("0: " + generateStars(fails));
+    }
+
+    public static String generateStars(int amountOfStars) {
+        StringBuilder stars = new StringBuilder();
+        for (int i = 0; i < amountOfStars; i++) {
+            stars.append("*");
+        }
+        return stars.toString();
     }
 
     public static int binarySearch(List<BookP7> books, int searchedId) {
@@ -250,6 +292,10 @@ public class Part7 {
         }
         return smallest;
     }
+}
+
+class Grade {
+
 }
 
 class BookP7 {
