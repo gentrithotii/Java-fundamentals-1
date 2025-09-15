@@ -1,5 +1,6 @@
 package org.example.JavaExercisesmooc.moocparts;
 
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Part7 {
@@ -40,11 +41,146 @@ public class Part7 {
 //        )
 //        );
 //
-////        System.out.println(linearSearch(books, 5));
+//        System.out.println(linearSearch(books, 5));
 //        books.sort(Comparator.comparing(BookP7::getId));
 //
 //        System.out.println(binarySearch(books, 3));
-        gradeStatistics(sc);
+//        gradeStatistics(sc);
+        recipesReading(sc);
+    }
+
+    public static void recipesReading(Scanner sc) {
+        System.out.print("File to read: ");
+        String userRequestFile = sc.nextLine();
+        System.out.println();
+
+        System.out.println("Commands:");
+        System.out.println("list - lists the recipes");
+        System.out.println("find name - searches recipes by name");
+        System.out.println("find cooking time - searches recipes by cooking time");
+        System.out.println("find ingredient - searches recipes by ingredient");
+        System.out.println("stop - stops the program");
+
+        while (true) {
+            System.out.print("\nEnter command: ");
+            String userChoice = sc.nextLine();
+
+            if (userChoice.equals("list")) {
+                listRecipes(userRequestFile);
+
+            } else if (userChoice.equals("find name")) {
+                System.out.print("Searched word: ");
+                String word = sc.nextLine();
+                findByName(userRequestFile, word);
+
+            } else if (userChoice.equals("find cooking time")) {
+                System.out.print("Max cooking time: ");
+                int maxTime = Integer.valueOf(sc.nextLine());
+                findByCookingTime(userRequestFile, maxTime);
+
+            } else if (userChoice.equals("find ingredient")) {
+                System.out.print("Ingredient: ");
+                String ingredient = sc.nextLine();
+                findByIngredient(userRequestFile, ingredient);
+
+            } else if (userChoice.equals("stop")) {
+                break;
+            }
+        }
+    }
+
+    public static void listRecipes(String file) {
+        try (Scanner fileScanner = new Scanner(Paths.get("filesforexercises/" + file))) {
+            System.out.println("\nRecipes:");
+            while (fileScanner.hasNextLine()) {
+                String name = fileScanner.nextLine();
+                if (name.isEmpty()) continue;
+                int time = Integer.parseInt(fileScanner.nextLine());
+
+                while (fileScanner.hasNextLine()) {
+                    String line = fileScanner.nextLine();
+                    if (line.isEmpty()) break;
+                }
+                System.out.println(name + ", cooking time: " + time);
+            }
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
+    }
+
+    public static void findByName(String file, String word) {
+        try (Scanner fileScanner = new Scanner(Paths.get("filesforexercises/" + file))) {
+            System.out.println("\nRecipes:");
+            while (fileScanner.hasNextLine()) {
+                String name = fileScanner.nextLine();
+                if (name.isEmpty()) continue;
+                int time = Integer.parseInt(fileScanner.nextLine());
+
+                while (fileScanner.hasNextLine()) {
+                    String line = fileScanner.nextLine();
+                    if (line.isEmpty()) break;
+                }
+
+                if (name.toLowerCase().contains(word.toLowerCase())) {
+                    System.out.println(name + ", cooking time: " + time);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
+    }
+
+    public static void findByCookingTime(String file, int maxTime) {
+        try (Scanner fileScanner = new Scanner(Paths.get("filesforexercises/" + file))) {
+            System.out.println("\nRecipes:");
+            while (fileScanner.hasNextLine()) {
+                String name = fileScanner.nextLine();
+                if (name.isEmpty()) continue;
+                int time = Integer.parseInt(fileScanner.nextLine());
+
+                while (fileScanner.hasNextLine()) {
+                    String line = fileScanner.nextLine();
+                    if (line.isEmpty()) break;
+                }
+
+                if (time <= maxTime) {
+                    System.out.println(name + ", cooking time: " + time);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
+    }
+
+    public static void findByIngredient(String file, String ingredient) {
+        try (Scanner fileScanner = new Scanner(Paths.get("filesforexercises/" + file))) {
+            System.out.println("\nRecipes:");
+
+            while (fileScanner.hasNextLine()) {
+                String name = fileScanner.nextLine();
+                if (name.isEmpty()) continue;
+
+                int time = Integer.parseInt(fileScanner.nextLine());
+
+                boolean hasIngredient = false;
+
+                while (fileScanner.hasNextLine()) {
+                    String line = fileScanner.nextLine().trim();
+                    if (line.isEmpty()) {
+                        break;
+                    }
+                    if (line.equalsIgnoreCase(ingredient)) {
+                        hasIngredient = true;
+                    }
+                }
+
+                if (hasIngredient) {
+                    System.out.println(name + ", cooking time: " + time);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("File not found");
+        }
     }
 
     public static void gradeStatistics(Scanner sc) {
