@@ -1,5 +1,6 @@
 package org.example.JavaExercisesmooc.moocparts;
 
+import javax.swing.plaf.PanelUI;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -46,7 +47,8 @@ public class Part7 {
 //
 //        System.out.println(binarySearch(books, 3));
 //        gradeStatistics(sc);
-        recipesReading(sc);
+//        recipesReading(sc);
+        bigYear(sc);
     }
 
     public static void recipesReading(Scanner sc) {
@@ -417,7 +419,6 @@ public class Part7 {
         return index;
     }
 
-
     public static int smallest(int[] array) {
         int smallest = array[0];
 
@@ -428,10 +429,152 @@ public class Part7 {
         }
         return smallest;
     }
+
+    public static void bigYear(Scanner sc) {
+
+        boolean loopi = true;
+        BirdWatcher bw = new BirdWatcher();
+
+
+        while (loopi) {
+
+                System.out.println("1.Add a bird");
+                System.out.println("2.Add an observation to a bird");
+                System.out.println("3.Print all birds");
+                System.out.println("4.Print one bird");
+                System.out.println("0.Exit");
+                System.out.print("Your choice: ");
+
+                try {
+                int menuChoice = sc.nextInt();
+
+                switch (menuChoice) {
+                    case 1:
+                        bw.add();
+                        System.out.println("We out");
+                        break;
+                    case 2:
+                        bw.addToObservation();
+                        break;
+                    case 3:
+                        bw.allBirds();
+                        break;
+                    case 4:
+                        bw.oneBird();
+                        break;
+                    case 0:
+                        loopi = false;
+                    default:
+                        System.out.println("Yo");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Wrong input");
+                continue;
+            }
+
+        }
+    }
 }
 
-class Grade {
+class BirdWatcher {
+    private final List<Bird> birds;
+    private final Scanner sc;
 
+    public BirdWatcher() {
+        this.birds = new ArrayList<>();
+        this.sc = new Scanner(System.in);
+    }
+
+    private Scanner getSc() {
+        return sc;
+    }
+
+    public List<Bird> getBirds() {
+        return birds;
+    }
+
+    public void addToObservation() {
+        System.out.println("Bird to add to observation: ");
+        String birdName = getSc().nextLine();
+
+        if (getBirds().isEmpty()) {
+            System.out.println("There's no birds in the list");
+        }
+
+        for (Bird b : getBirds()) {
+            if (b.getName().equals(birdName)) {
+                b.observeBird();
+            } else {
+                System.out.println("Bird with that name not found");
+            }
+        }
+    }
+
+    public void add() {
+
+        System.out.print("Name: ");
+        String birdName = sc.nextLine();
+        System.out.println("Name in Latin: ");
+        String latinName = sc.nextLine();
+
+        Bird bird = new Bird(birdName, latinName);
+
+        getBirds().add(bird);
+
+
+    }
+
+    public void oneBird() {
+        int randomNum = (int) (Math.random() * (getBirds().size() - 1));
+        if (getBirds().isEmpty()) {
+            System.out.println("No birds in the list");
+        } else {
+            Bird b = getBirds().get(randomNum);
+            System.out.println(b.getName() + "(" + b.getLatinName() + ")" + ": " + b.getObservation() + " Observations");
+        }
+    }
+
+    public void allBirds() {
+        for (Bird b : getBirds()) {
+            System.out.println(b.getName() + "(" + b.getLatinName() + ")" + ": " + b.getObservation() + " Observations");
+        }
+    }
+}
+
+class Bird {
+    private String name;
+    private String latinName;
+    private int observation;
+
+    public Bird(String name, String latinName) {
+        setName(name);
+        setLatinName(latinName);
+        this.observation = 0;
+    }
+
+    public int getObservation() {
+        return observation;
+    }
+
+    public void observeBird() {
+        this.observation += 1;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLatinName() {
+        return latinName;
+    }
+
+    public void setLatinName(String latinName) {
+        this.latinName = latinName;
+    }
 }
 
 class BookP7 {
