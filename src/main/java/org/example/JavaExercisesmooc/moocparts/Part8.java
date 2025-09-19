@@ -6,8 +6,33 @@ public class Part8 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        returnCubeOfNumber(sc);
+//        returnCubeOfNumber(sc);
+        averageOfPositiveNumbers(sc);
+    }
 
+    public static void averageOfPositiveNumbers(Scanner sc) {
+        double sum = 0, positiveNumber = 0;
+
+        while (true) {
+            System.out.print("Enter positive number: ");
+            int userInput = sc.nextInt();
+
+            if (userInput == 0) {
+                break;
+
+            }
+            if (userInput > 0) {
+                positiveNumber++;
+                sum += userInput;
+            }
+
+        }
+        if (positiveNumber == 0) {
+            System.out.println("Cannot calculate the average");
+        } else {
+            double result = sum / positiveNumber;
+            System.out.println(result);
+        }
     }
 
     public static void returnCubeOfNumber(Scanner sc) {
